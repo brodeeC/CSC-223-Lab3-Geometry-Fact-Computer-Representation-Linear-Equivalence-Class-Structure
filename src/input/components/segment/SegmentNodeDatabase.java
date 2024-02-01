@@ -21,30 +21,32 @@ import java.util.Set;
 import input.components.point.PointNode;
 
 public class SegmentNodeDatabase {
-	Map<PointNode, Set<PointNode>>_adjLists;
+	Map<PointNode, Set<PointNode>> _adjLists;
 
 	/**
 	 * Basic constructor
 	 */
 	public SegmentNodeDatabase() {
 
-		 this(new HashMap<PointNode, Set<PointNode>>());
+		this(new HashMap<PointNode, Set<PointNode>>());
 
 	}
 
 	/**
 	 * Overloaded Constructor.
+	 * 
 	 * @param map
 	 */
 	public SegmentNodeDatabase(Map<PointNode, Set<PointNode>> map) {
 		_adjLists = new HashMap<PointNode, Set<PointNode>>();
-		for (java.util.Map.Entry<PointNode, Set<PointNode>> m: map.entrySet()) {
+		for (java.util.Map.Entry<PointNode, Set<PointNode>> m : map.entrySet()) {
 			_adjLists.put(m.getKey(), m.getValue());
 		}
 	}
 
 	/**
 	 * Counts the number of segments in the shape.
+	 * 
 	 * @return count
 	 */
 	public int numUndirectedEdges() {
@@ -52,11 +54,12 @@ public class SegmentNodeDatabase {
 		List<SegmentNode> list = new ArrayList<SegmentNode>();
 		list = asSegmentList();
 		count = list.size();
-		return count/2;
+		return count / 2;
 	}
 
 	/**
 	 * Calls addAdjacencyList to add an edge to _adjLists.
+	 * 
 	 * @param point1
 	 * @param point2
 	 */
@@ -66,6 +69,7 @@ public class SegmentNodeDatabase {
 
 	/**
 	 * Calls addDirectedEdge to add an edge to _adjLists.
+	 * 
 	 * @param point1
 	 * @param point2
 	 */
@@ -76,38 +80,40 @@ public class SegmentNodeDatabase {
 
 	/**
 	 * Connects a point to a list of points and adds it to _adjLists.
+	 * 
 	 * @param point
 	 * @param pointList
 	 */
 	public void addAdjacencyList(PointNode point, List<PointNode> pointList) {
 		Set<PointNode> points = new HashSet<PointNode>(pointList);
-		if (_adjLists.get(point) != null) points.addAll(_adjLists.get(point));
+		if (_adjLists.get(point) != null)
+			points.addAll(_adjLists.get(point));
 		_adjLists.put(point, points);
 	}
 
 	/**
 	 * Returns a list of all SegmentNodes and where they're connected.
+	 * 
 	 * @return List<SegmentNode>
 	 */
-	public List<SegmentNode> asSegmentList(){
+	public List<SegmentNode> asSegmentList() {
 		ArrayList<SegmentNode> list = new ArrayList<SegmentNode>();
-		for (PointNode point1: _adjLists.keySet()) {
+		for (PointNode point1 : _adjLists.keySet()) {
 			Set<PointNode> set = new HashSet<PointNode>();
 			set.addAll(_adjLists.get(point1));
-			for (PointNode point2: set) {
+			for (PointNode point2 : set) {
 				list.add(new SegmentNode(point1, point2));
 			}
 		}
 		return list;
 	}
-	
+
 	/**
-	 * Call list of segments from asSegmentList.
-	 * Create HashSet, Sets eliminate repetitive elements.
-	 * ArrayList will iterate over elements in HashSet and add them.
+	 * Call list of segments from asSegmentList. Create HashSet, Sets eliminate
+	 * repetitive elements. ArrayList will iterate over elements in HashSet and add
+	 * them.
 	 */
-	public List<SegmentNode> asUniqueSegmentList(){
+	public List<SegmentNode> asUniqueSegmentList() {
 		return asSegmentList();
 	}
 }
-

@@ -14,7 +14,7 @@ import java.util.List;
 import java.util.Set;
 
 public class PointNodeDatabase {
-	Set<PointNode>_points;
+	Set<PointNode> _points;
 
 	/**
 	 * Basic constructor, creates a LinkedHashSet.
@@ -25,6 +25,7 @@ public class PointNodeDatabase {
 
 	/**
 	 * Overloaded constructor that creates a LinkedHashSet.
+	 * 
 	 * @param list
 	 */
 	public PointNodeDatabase(List<PointNode> list) {
@@ -34,6 +35,7 @@ public class PointNodeDatabase {
 
 	/**
 	 * Puts the point into the database.
+	 * 
 	 * @param point
 	 */
 	public void put(PointNode point) {
@@ -42,26 +44,29 @@ public class PointNodeDatabase {
 
 	/**
 	 * Contains method checks if a point is there.
+	 * 
 	 * @param point
-	 * @return 
+	 * @return
 	 */
-	public boolean contains (PointNode point) {
+	public boolean contains(PointNode point) {
 		return _points.contains(point);
 	}
 
 	/**
 	 * Checks if a point is present using its coordinates.
+	 * 
 	 * @param x
 	 * @param y
 	 * @return
 	 */
 	public boolean contains(double x, double y) {
-		
-		return _points.contains(new PointNode(x,y));
+
+		return _points.contains(new PointNode(x, y));
 	}
 
 	/**
 	 * Gets the name of a point.
+	 * 
 	 * @param point
 	 * @return
 	 * @throws IllegalArgumentException
@@ -72,39 +77,44 @@ public class PointNodeDatabase {
 
 	/**
 	 * Gets the name of a point with only coordinates.
+	 * 
 	 * @param x
 	 * @param y
 	 * @return
 	 * @throws IllegalArgumentException
 	 */
 	public String getName(double x, double y) {
-		return getPoint(x,y)._name;
+		return getPoint(x, y)._name;
 	}
 
 	/**
 	 * Gets the point and returns it, throws an exception if it's not there.
+	 * 
 	 * @param point
 	 * @return
 	 * @throws IllegalArgumentException
 	 */
-	public PointNode getPoint (PointNode point) {
+	public PointNode getPoint(PointNode point) {
 		if (_points.contains(point)) {
-			for (PointNode value: _points) {
-				if (value.equals(point)) return value;
+			for (PointNode value : _points) {
+				if (value.equals(point))
+					return value;
 			}
 		}
 		return null;
 	}
 
 	/**
-	 * Gets the point and returns it using coordinates, throws an exception if it's not there.
+	 * Gets the point and returns it using coordinates, throws an exception if it's
+	 * not there.
+	 * 
 	 * @param x
 	 * @param y
 	 * @return
 	 * @throws IllegalArgumentException
 	 */
 	public PointNode getPoint(double x, double y) {
-		PointNode point = new PointNode(x,y);
+		PointNode point = new PointNode(x, y);
 		return getPoint(point);
 	}
 }
