@@ -15,4 +15,11 @@ public class LinkedList <T>{
 		
 		public DNode (DNode p, T i, DNode n) {_prev = p; _item = i; _next = n; }
 	}
+	
+	public LinkedList() {
+		_tail = new DNode();
+		_head = new DNode(null, null, _tail);
+		_tail._prev = _head;
+		_size = 0;
+	}
 }
