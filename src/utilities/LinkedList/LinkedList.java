@@ -46,19 +46,16 @@ public class LinkedList<T> {
 		Node node = new Node(_head, element, _head._next);
 		_head._next = node;
 		tmpNode._prev = node;
+		_size++;
 	}
 
 	public boolean contains(T target) {
 		return contains(_head._next, _tail._prev, target);
 	}
-
 	private boolean contains(Node head, Node tail, T target) {
-		if (head._data.equals(target) || (tail._data).equals(target))
-			return true;
-		if (head._next == tail)
-			return false;
-		if (head == tail)
-			return false;
+		if (head._data.equals(target) || (tail._data).equals(target)) return true;
+		if (head._next == tail) return false;
+		if (head == tail) return false;
 
 		return contains(head._next, _tail._prev, target);
 	}

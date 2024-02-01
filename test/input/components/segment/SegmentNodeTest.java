@@ -15,7 +15,7 @@ import org.junit.jupiter.api.Test;
 
 import input.components.point.PointNode;
 
-class SegmentNodeTest {
+class SegmentNodeTest { 
 
 	/**
 	 * Test that a SegmentNode is properly constructed by taking to points
