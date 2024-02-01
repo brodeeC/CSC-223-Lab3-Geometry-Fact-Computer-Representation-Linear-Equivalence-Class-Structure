@@ -36,7 +36,9 @@ public class LinkedList <T>{
 	}
 	
 	public void addToFront(T element) {
-		//TODO 
+		//Node tmpNode = _head._next;
+		Node elementNode = new Node(_head, element, _head._next);
+		_size++;
 	}
 	
 	public boolean contains(T target) {
