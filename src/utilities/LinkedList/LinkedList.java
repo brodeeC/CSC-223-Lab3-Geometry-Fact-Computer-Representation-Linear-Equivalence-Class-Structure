@@ -111,6 +111,19 @@ public class LinkedList<T> {
 	}
 
 	public void reverse() {
-		// TODO
+		if (!(isEmpty())) {
+			reverse(_head._next, _tail._prev);
+		}
+	}
+	private void reverse(Node head, Node tail) {
+		if (head== tail) return;
+		if (head._next == tail) return;
+		swap(head, tail);
+		reverse(head._next, tail._prev);
+	}
+	private void swap(Node head, Node tail) {
+		T tmpNode = head._data;
+		head._data = tail._data;
+		tail._data = tmpNode;
 	}
 }
