@@ -35,6 +35,7 @@ public class LinkedList<T> {
 
 	public void clear() {
 		new LinkedList<T>();
+		_size = 0;
 	}
 
 	public int size() {
@@ -42,17 +43,21 @@ public class LinkedList<T> {
 	}
 
 	public void addToFront(T element) {
-		Node tmpNode = _head._next;
-		Node node = new Node(_head, element, _head._next);
-		_head._next = node;
-		tmpNode._prev = node;
-		_size++;
+		if (element != null) {
+			Node tmpNode = _head._next;
+			Node node = new Node(_head, element, _head._next);
+			_head._next = node;
+			tmpNode._prev = node;
+			_size++;
+		}
 	}
 
 	public boolean contains(T target) {
+		if (target == null) return false;
 		return contains(_head._next, _tail._prev, target);
 	}
 	private boolean contains(Node head, Node tail, T target) {
+		if (head == _tail || tail == _head) return false;
 		if (head._data.equals(target) || (tail._data).equals(target)) return true;
 		if (head._next == tail) return false;
 		if (head == tail) return false;
@@ -61,30 +66,64 @@ public class LinkedList<T> {
 	}
 
 	private Node previous(T target) {
-		// TODO
-		return last();
+		for(Node node = _head._next; node != _tail; node = node._next) {
+			if (node._data.equals(target)) return node._prev;
+		}
+		return null;
 	}
 
 	public boolean remove(T target) {
-		// TODO
+		if (!(contains(target))) return false;
+
+		Node node = previous(target);
+		if (node != null) {
+			Node tmpNode = node._next;
+			node._next = tmpNode._next;
+			tmpNode._prev = node;
+			_size--;
+			return true;
+		}
 		return false;
 	}
 
 	private Node last() {
-		// TODO
-		return previous(null);
+		return _tail._prev;
 	}
 
 	public void addToBack(T element) {
-		// TODO
+		if (element != null) {
+			Node node = last();
+			Node newNode = new Node(node, element, _tail);
+			node._next = newNode;
+			_tail._prev = newNode;
+			_size++;
+		}
 	}
 
 	public String toString() {
-		// TODO
-		return null;
+		StringBuilder s = new StringBuilder();
+		for (Node node = _head._next; node != _tail._prev; node = node._next) {
+			s.append(node._data);
+			s.append(", ");
+		}
+		s.append(_tail._prev._data);
+		return s.toString();
 	}
 
 	public void reverse() {
-		// TODO
+		if (!(isEmpty())) {
+			reverse(_head._next, _tail._prev);
+		}
+	}
+	private void reverse(Node head, Node tail) {
+		if (head== tail) return;
+		if (head._next == tail) return;
+		swap(head, tail);
+		reverse(head._next, tail._prev);
+	}
+	private void swap(Node head, Node tail) {
+		T tmpNode = head._data;
+		head._data = tail._data;
+		tail._data = tmpNode;
 	}
 }
