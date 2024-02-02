@@ -103,17 +103,56 @@ class LinkedListTest {
 
 	@Test
 	void testAddToBack() {
+		
+		LinkedList<Integer> list = new LinkedList<Integer>();
+		list.addToBack(1);
+		list.addToBack(2);
+		list.addToBack(3);
+		assertEquals(list.size(), 3);
+		assertTrue(list.contains(1));
+		assertTrue(list.contains(2));
+		assertTrue(list.contains(3));
 
 	}
 
 	@Test
 	void testToString() {
 
+		LinkedList<Integer> list = new LinkedList<Integer>();
+		list.addToBack(1);
+		list.addToBack(2);
+		list.addToBack(3);
+		assertEquals(list.toString(), "1, 2, 3");
+		
 	}
 
 	@Test
 	void testReverse() {
 
+		LinkedList<Integer> list = new LinkedList<Integer>();
+		
+		list.addToBack(1);
+		list.addToBack(2);
+		list.addToBack(3);
+		
+		LinkedList<Integer> list2 = new LinkedList<Integer>();
+		
+		list2.addToFront(1);
+		list2.addToFront(2);
+		list2.addToFront(3);
+		list.reverse();
+		
+		assertEquals(list.toString(), list2.toString());
+		
+		list.clear();
+		list2.clear();
+		
+		for (int i = 0; i < 100; i++) {
+			list.addToBack(i);
+			list2.addToFront(i);
+		}
+		list.reverse();
+		assertEquals(list.toString(), list2.toString());
 	}
 
 }

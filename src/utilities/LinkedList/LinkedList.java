@@ -34,7 +34,8 @@ public class LinkedList<T> {
 	}
 
 	public void clear() {
-		new LinkedList<T>();
+		_head._next = _tail;
+		_tail._prev = _head;
 		_size = 0;
 	}
 
@@ -117,7 +118,7 @@ public class LinkedList<T> {
 	}
 	private void reverse(Node head, Node tail) {
 		if (head== tail) return;
-		if (head._next == tail) return;
+		if (head._prev == tail) return;
 		swap(head, tail);
 		reverse(head._next, tail._prev);
 	}
