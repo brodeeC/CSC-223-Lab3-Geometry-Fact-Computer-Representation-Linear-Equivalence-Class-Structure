@@ -35,6 +35,7 @@ public class LinkedList<T> {
 
 	public void clear() {
 		new LinkedList<T>();
+		_size = 0;
 	}
 
 	public int size() {
@@ -53,6 +54,7 @@ public class LinkedList<T> {
 		return contains(_head._next, _tail._prev, target);
 	}
 	private boolean contains(Node head, Node tail, T target) {
+		if (head == _tail || tail == _head) return false;
 		if (head._data.equals(target) || (tail._data).equals(target)) return true;
 		if (head._next == tail) return false;
 		if (head == tail) return false;
@@ -61,13 +63,20 @@ public class LinkedList<T> {
 	}
 
 	private Node previous(T target) {
-		// TODO
-		return last();
+		for(Node node = _head._next; node._next != _tail; node = node._next) {
+			if (node._next._data.equals(target)) return node;
+		}
+		return null;
 	}
 
 	public boolean remove(T target) {
-		// TODO
-		return false;
+		if (!(contains(target))) return false;
+		Node node = previous(target);
+		Node tmpNode = node._next._next;
+		node._next = tmpNode;
+		tmpNode._prev = node;
+		_size--;
+		return true;
 	}
 
 	private Node last() {
