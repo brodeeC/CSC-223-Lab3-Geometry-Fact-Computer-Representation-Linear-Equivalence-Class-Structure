@@ -24,6 +24,7 @@ public class LinkedEquivalenceClass<T> {
 	 * @return
 	 */
 	public boolean isEmpty() {
+		
 		return _rest.isEmpty();
 		
 	}
@@ -51,6 +52,8 @@ public class LinkedEquivalenceClass<T> {
 	}
 	
 	public boolean add(T element) {
+		if(element == null)return false;
+		
 		return false;
 		
 	}
