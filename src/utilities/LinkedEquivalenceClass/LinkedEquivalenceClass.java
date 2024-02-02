@@ -46,5 +46,30 @@ public class LinkedEquivalenceClass<T> {
 		return false;
 		
 	}
+	
+	public boolean belongs (T target) {
+		return false;
+		
+	}
+	
+	public boolean remove(T target) {
+		return false;
+		
+	}
+	
+	public boolean removeCanonical() {
+		
+		return false;
+	}
+	
+	public boolean demoteAndSetCanonical(T element) {
+		
+		return false;
+	}
+	
+	public String toString() {
+		return null;
+		
+	}
 
 }
