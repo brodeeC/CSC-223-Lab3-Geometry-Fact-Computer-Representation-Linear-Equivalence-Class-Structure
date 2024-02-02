@@ -1,8 +1,9 @@
 package utilities.LinkedList;
 
+import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertFalse;
-import static org.junit.jupiter.api.Assertions.assertEquals;
-import static org.junit.jupiter.api.Assertions.assertTrue;
+import static org.junit.Assert.assertTrue;
+
 import org.junit.jupiter.api.Test;
 
 class LinkedListTest {
@@ -11,17 +12,17 @@ class LinkedListTest {
 	void testConstructor() {
 		
 		LinkedList<Integer> list = new LinkedList<Integer>();
-		assertTrue(list.isEmpty());
-		assertEquals(list.size(),0);
+		assertTrue("List not empty", list.isEmpty());
+		assertEquals("Size not 0",list.size(),0);
 
 	}
 
 	@Test
 	void testIsEmpty() {
 		LinkedList<Integer> list = new LinkedList<Integer>();
-		assertTrue(list.isEmpty());
+		assertTrue("List not empty",list.isEmpty());
 		list.addToFront(1);
-		assertFalse(list.isEmpty());
+		assertFalse("List empty",list.isEmpty());
 	}
 
 	@Test
@@ -31,10 +32,10 @@ class LinkedListTest {
 		list.addToFront(1);
 		list.addToFront(2);
 		list.addToFront(3);
-		assertEquals(list.size(), 3);
+		assertEquals("Size not 3", list.size(), 3);
 		list.clear();
-		assertTrue(list.isEmpty());
-		assertEquals(list.size(),0);
+		assertTrue("List not empty", list.isEmpty());
+		assertEquals("Size not 0", list.size(),0);
 
 	}
 
@@ -45,8 +46,7 @@ class LinkedListTest {
 		list.addToFront(1);
 		list.addToFront(2);
 		list.addToFront(3);
-		assertEquals(list.size(), 3);
-
+		assertEquals("Size not 3", list.size(), 3);
 	}
 
 	@Test
@@ -56,10 +56,10 @@ class LinkedListTest {
 		list.addToFront(1);
 		list.addToFront(2);
 		list.addToFront(3);
-		assertEquals(list.size(), 3);
-		assertTrue(list.contains(1));
-		assertTrue(list.contains(2));
-		assertTrue(list.contains(3));
+		assertEquals("Size not 3", list.size(), 3);
+		assertTrue("1 not found", list.contains(1));
+		assertTrue("2 not found", list.contains(2));
+		assertTrue("3 not found",list.contains(3));
 	}
 
 	@Test
@@ -69,10 +69,11 @@ class LinkedListTest {
 		list.addToFront("world");
 		list.addToFront("pizza");
 		list.addToFront(null);
-		assertTrue(list.contains("pizza"));
-		assertTrue(list.contains("hello"));
-		assertTrue(list.contains("world"));
-		assertFalse(list.contains(null));
+		assertEquals("Size not 3", list.size(), 3);
+		assertTrue("pizza not found", list.contains("pizza"));
+		assertTrue("hello not found", list.contains("hello"));
+		assertTrue("world not found", list.contains("world"));
+		assertFalse("null found found", list.contains(null));
 		
 
 	}
@@ -85,19 +86,19 @@ class LinkedListTest {
 		list.addToFront(2);
 		list.addToFront(3);
 		
-		assertTrue(list.remove(1));
-		assertTrue(list.remove(2));
-		assertTrue(list.remove(3));
-		assertTrue(list.isEmpty());
-		assertEquals(list.size(),0);
+		assertTrue("1 not removed", list.remove(1));
+		assertTrue("2 not removed", list.remove(2));
+		assertTrue("3 not removed", list.remove(3));
+		assertTrue("List not empty", list.isEmpty());
+		assertEquals("Size not 0", list.size(),0);
 		
 		for (int i = 0; i < 100; i++) {
-			list.addToFront(1);
+			list.addToFront(i);
 		}
 		for (int i = 0; i < 100; i++) {
-			assertTrue(list.remove(1));
+			assertTrue("i not removed", list.remove(i));
 		}
-		assertEquals(list.size(), 0);
+		assertEquals("Size not 0", list.size(), 0);
 		
 	}
 
@@ -108,10 +109,10 @@ class LinkedListTest {
 		list.addToBack(1);
 		list.addToBack(2);
 		list.addToBack(3);
-		assertEquals(list.size(), 3);
-		assertTrue(list.contains(1));
-		assertTrue(list.contains(2));
-		assertTrue(list.contains(3));
+		assertEquals("Size not 3", list.size(), 3);
+		assertTrue("1 not found", list.contains(1));
+		assertTrue("2 not found", list.contains(2));
+		assertTrue("3 not found", list.contains(3));
 
 	}
 
@@ -122,7 +123,7 @@ class LinkedListTest {
 		list.addToBack(1);
 		list.addToBack(2);
 		list.addToBack(3);
-		assertEquals(list.toString(), "1, 2, 3");
+		assertEquals("String not 1, 2, 3", list.toString(), "1, 2, 3");
 		
 	}
 
@@ -142,7 +143,7 @@ class LinkedListTest {
 		list2.addToFront(3);
 		list.reverse();
 		
-		assertEquals(list.toString(), list2.toString());
+		assertEquals("list not reversed", list.toString(),list2.toString());
 		
 		list.clear();
 		list2.clear();
@@ -152,7 +153,7 @@ class LinkedListTest {
 			list2.addToFront(i);
 		}
 		list.reverse();
-		assertEquals(list.toString(), list2.toString());
+		assertEquals("list not reversed", list.toString(), list2.toString());
 	}
 
 }
