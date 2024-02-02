@@ -65,18 +65,23 @@ public class LinkedList<T> {
 	private Node previous(T target) {
 		for(Node node = _head._next; node != _tail; node = node._next) {
 			if (node._data.equals(target)) return node._prev;
+			if (target == null && node._data == null) return node._prev;
 		}
 		return null;
 	}
 
 	public boolean remove(T target) {
 		if (!(contains(target))) return false;
+		
 		Node node = previous(target);
-		Node tmpNode = node._next;
-		node._next = tmpNode._next;
-		tmpNode._prev = node;
-		_size--;
-		return true;
+		if (node != null) {
+			Node tmpNode = node._next;
+			node._next = tmpNode._next;
+			tmpNode._prev = node;
+			_size--;
+			return true;
+		}
+		return false;
 	}
 
 	private Node last() {

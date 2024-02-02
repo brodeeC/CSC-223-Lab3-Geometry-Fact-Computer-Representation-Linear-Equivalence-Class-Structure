@@ -83,6 +83,14 @@ class LinkedListTest {
 		assertTrue(list.isEmpty());
 		assertEquals(list.size(),0);
 		
+		for (int i = 0; i < 100; i++) {
+			list.addToFront(1);
+		}
+		for (int i = 0; i < 100; i++) {
+			assertTrue(list.remove(1));
+		}
+		assertEquals(list.size(), 0);
+		
 	}
 
 	@Test
