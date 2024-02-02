@@ -64,7 +64,15 @@ class LinkedListTest {
 
 	@Test
 	void testContains() {
-		
+		LinkedList<String> list = new LinkedList<String>();
+		list.addToFront("hello");
+		list.addToFront("world");
+		list.addToFront("pizza");
+		list.addToFront(null);
+		assertTrue(list.contains("pizza"));
+		assertTrue(list.contains("hello"));
+		assertTrue(list.contains("world"));
+		assertFalse(list.contains(null));
 		
 
 	}
