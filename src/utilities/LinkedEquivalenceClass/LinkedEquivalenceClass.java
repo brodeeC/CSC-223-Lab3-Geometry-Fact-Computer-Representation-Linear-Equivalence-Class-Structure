@@ -19,21 +19,34 @@ public class LinkedEquivalenceClass<T> {
 		
 	}
 	
+	/**
+	 * Checks to see if the LinkedList is empty
+	 * @return
+	 */
 	public boolean isEmpty() {
-		return false;
+		return _rest.isEmpty();
 		
 	}
 	
+	/**
+	 * Clears the LinkedList
+	 */
 	public void clear() {
 		
+		_rest.clear();
 	}
 	
 	public void clearNonCanonical() {
 		
 	}
 	
+	/**
+	 * Returns the size of the LinkedList 
+	 * @return
+	 */
 	public int size() {
-		return 0;
+		
+		return _rest.size();
 		
 	}
 	
@@ -42,8 +55,16 @@ public class LinkedEquivalenceClass<T> {
 		
 	}
 	
-	public boolean contains(T target) {
-		return false;
+	/**
+	 * Sees if the LinkedList contains the target T
+	 * @param target
+	 * @return
+	 */
+	public boolean contains(T target) { //TODO Need a null check
+		if(isEmpty()) return false;
+		if(target == null) return false;
+		
+		return (_rest.contains(target));
 		
 	}
 	
@@ -53,6 +74,8 @@ public class LinkedEquivalenceClass<T> {
 	}
 	
 	public boolean remove(T target) {
+		if(isEmpty())return false;
+		
 		return false;
 		
 	}
