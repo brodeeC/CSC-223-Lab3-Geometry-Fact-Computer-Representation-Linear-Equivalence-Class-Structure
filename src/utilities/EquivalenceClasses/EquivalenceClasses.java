@@ -1,5 +1,6 @@
 package utilities.EquivalenceClasses;
 
+import java.util.ArrayList;
 import java.util.Comparator;
 import java.util.List;
 
@@ -11,16 +12,19 @@ public class EquivalenceClasses<T>{
 	protected List<LinkedEquivalenceClass<T>> _classes;
 	
 
-	public <T extends Comparator<T>> EquivalenceClasses(){
+	public EquivalenceClasses(Comparator<T> comp){
+		_classes = new ArrayList<LinkedEquivalenceClass<T>>();
+		_comparator = comp;
 		
 	}
 	
 	public boolean add(T element) {
-		return false;
+		return add(element);
 	}
 	
 	public boolean contains(T target) {
-		return false;
+		if(_classes.isEmpty()) return false;
+		return _classes.contains(target);
 	}
 	
 	public int size() {
@@ -28,11 +32,12 @@ public class EquivalenceClasses<T>{
 	}
 	
 	public int numClasses() {
-		return 0; 
+		return _classes.size(); 
 	}
 	
 	protected int indexOfClass(T element) {
-		return 0;
+		if(!(contains(element))) return -1;
+		return _classes.indexOf(element);
 	}
 	
 	public String toString() {
