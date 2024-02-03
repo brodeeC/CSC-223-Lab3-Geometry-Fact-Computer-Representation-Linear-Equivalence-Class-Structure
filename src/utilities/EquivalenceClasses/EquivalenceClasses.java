@@ -1,17 +1,17 @@
-package utilities.EquivalenceClass;
+package utilities.EquivalenceClasses;
 
 import java.util.Comparator;
 import java.util.List;
 
 import utilities.LinkedEquivalenceClass.LinkedEquivalenceClass;
 
-public class EquivalenceClass<T> {
-		
+public class EquivalenceClasses<T>{
+	
 	protected Comparator<T> _comparator;
 	protected List<LinkedEquivalenceClass<T>> _classes;
 	
 
-	public <T extends Comparator<T>> EquivalenceClass(){
+	public <T extends Comparator<T>> EquivalenceClasses(){
 		
 	}
 	
@@ -38,4 +38,5 @@ public class EquivalenceClass<T> {
 	public String toString() {
 		return null;
 	}
+
 }
