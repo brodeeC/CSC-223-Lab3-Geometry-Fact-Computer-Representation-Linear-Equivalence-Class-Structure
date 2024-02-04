@@ -10,12 +10,15 @@ public class LinkedEquivalenceClass<T> {
 	protected Comparator<T> _comparator;
 	protected LinkedList<T> _rest;
 	
-	public <T extends Comparator<T>> LinkedEquivalenceClass() {
+	public  LinkedEquivalenceClass() {
+		
+		_rest = new LinkedList<T>();
+		
 		
 	}
 	
 	public T canonical() {
-		return _canonical; //TODO
+		return _canonical; 
 		
 	}
 	
@@ -38,8 +41,8 @@ public class LinkedEquivalenceClass<T> {
 	}
 	
 	public void clearNonCanonical() {
-		
-	}
+		_rest.clear();	
+		}
 	
 	/**
 	 * Returns the size of the LinkedList 
