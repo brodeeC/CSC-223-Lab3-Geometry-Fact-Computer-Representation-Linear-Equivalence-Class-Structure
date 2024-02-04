@@ -27,10 +27,11 @@ public class EquivalenceClasses<T>{
 		return _classes.contains(target);
 	}
 	
+	//what is size actually looking for? different than numClasses?
 	public int size() {
-		return 0;
+		return _classes.size();
 	}
-	
+
 	public int numClasses() {
 		return _classes.size(); 
 	}
@@ -41,7 +42,12 @@ public class EquivalenceClasses<T>{
 	}
 	
 	public String toString() {
-		return null;
+		StringBuilder str = new StringBuilder();
+		str.append("comparator: " + _comparator);
+		for(int i = 0; i<numClasses(); i++) {
+			str.append(_classes.get(i));
+		}
+		return str.toString();
 	}
 
 }
