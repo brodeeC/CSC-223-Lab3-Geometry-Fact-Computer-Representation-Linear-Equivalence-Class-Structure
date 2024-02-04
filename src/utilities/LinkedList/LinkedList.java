@@ -54,11 +54,11 @@ public class LinkedList<T> {
 	}
 
 	public boolean contains(T target) {
-		if (target == null) return false;
 		return contains(_head._next, _tail._prev, target);
 	}
 	private boolean contains(Node head, Node tail, T target) {
-		if (head == _tail || tail == _head) return false;
+		if (isEmpty()) return false;
+		if (target == null) return false;
 		if (head._data.equals(target) || (tail._data).equals(target)) return true;
 		if (head._next == tail) return false;
 		if (head == tail) return false;
@@ -117,7 +117,7 @@ public class LinkedList<T> {
 		}
 	}
 	private void reverse(Node head, Node tail) {
-		if (head== tail) return;
+		if (head == tail) return;
 		if (head._prev == tail) return;
 		swap(head, tail);
 		reverse(head._next, tail._prev);
