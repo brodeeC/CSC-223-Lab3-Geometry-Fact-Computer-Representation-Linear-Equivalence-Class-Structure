@@ -15,7 +15,6 @@ public class EquivalenceClasses<T>{
 	public EquivalenceClasses(Comparator<T> comp){
 		_classes = new ArrayList<LinkedEquivalenceClass<T>>();
 		_comparator = comp;
-		
 	}
 	
 	public boolean add(T element) {
