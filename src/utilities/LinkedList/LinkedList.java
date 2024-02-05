@@ -23,7 +23,7 @@ public class LinkedList<T> {
 	}
 
 	public LinkedList() {
-		_tail = new Node(null,null,null); //Was empty did not know if the nulls needed to be added so I added them -Kyler
+		_tail = new Node(null,null,null); 
 		_head = new Node(null, null, _tail);
 		_tail._prev = _head;
 		_size = 0;

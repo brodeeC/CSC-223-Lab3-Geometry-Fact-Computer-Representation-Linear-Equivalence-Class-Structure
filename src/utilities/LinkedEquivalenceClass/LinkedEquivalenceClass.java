@@ -10,8 +10,8 @@ public class LinkedEquivalenceClass<T> {
 	protected Comparator<T> _comparator;
 	protected LinkedList<T> _rest;
 	
-	public  LinkedEquivalenceClass() {
-		
+	public  LinkedEquivalenceClass(Comparator<T> _comparator) {
+		_comparator = new Comparator<T>(); //Ask Dr. Alvin do I need this line
 		_rest = new LinkedList<T>();
 		
 		
@@ -40,7 +40,10 @@ public class LinkedEquivalenceClass<T> {
 		_rest.clear();
 	}
 	
-	public void clearNonCanonical() {
+	/**
+	 * Clears the NonCanonical from the LinkedList
+	 */
+	public void clearNonCanonical() { //TODO think this through a little more
 		_rest.clear();	
 		}
 	
@@ -55,7 +58,16 @@ public class LinkedEquivalenceClass<T> {
 	}
 	
 	public boolean add(T element) {
-		if(element == null)return false;
+		//If the element is even would be added to the front of the linkedlist
+		if(element != null && _comparator.compare(_canonical, element)==0) {
+			_rest.addToFront(element);
+			return true;
+		}
+		//If the element is odd will be added to the back of the linkedlist
+		if(element != null && _comparator.compare(_canonical, element)==1) {
+			_rest.addToBack(element);
+			return true;
+		}
 		
 		return false;
 		
@@ -70,7 +82,7 @@ public class LinkedEquivalenceClass<T> {
 		if(isEmpty()) return false;
 		if(target == null) return false;
 		
-		return (_rest.contains(target));
+		return _rest.contains(target);
 		
 	}
 	
@@ -81,6 +93,11 @@ public class LinkedEquivalenceClass<T> {
 	
 	public boolean remove(T target) {
 		if(isEmpty())return false;
+
+		if(target != null && _rest.contains(target)) {
+			_rest.remove(target);
+			return true;
+		}
 		
 		return false;
 		
