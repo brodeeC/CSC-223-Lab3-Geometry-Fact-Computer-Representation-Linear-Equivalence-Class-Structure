@@ -1,3 +1,10 @@
+/** This is a Doubly Linked List class with head and tail sentinel nodes. This class manipulates a 
+ * linked list in different ways.
+ * 
+ * @author Brodee Clontz, Eleanor Badgett, Kyler Bailey
+ * @date 02/06/24
+ */
+
 package utilities.LinkedList;
 
 public class LinkedList<T> {
@@ -11,10 +18,19 @@ public class LinkedList<T> {
 		protected Node _next;
 		protected Node _prev;
 
+		/**
+		 * Node constructor
+		 */
 		public Node() {
 			this(null, null, null);
 		}
 
+		/**
+		 * Overloaded Node constructor
+		 * @param p
+		 * @param i
+		 * @param n
+		 */
 		public Node(Node p, T i, Node n) {
 			_prev = p;
 			_data = i;
@@ -22,6 +38,9 @@ public class LinkedList<T> {
 		}
 	}
 
+	/**
+	 * LinkedList constructor
+	 */
 	public LinkedList() {
 		_tail = new Node(null,null,null); 
 		_head = new Node(null, null, _tail);
@@ -29,20 +48,35 @@ public class LinkedList<T> {
 		_size = 0;
 	}
 
+	/**
+	 * Determines if the List is empty
+	 * @return if the list is empty
+	 */
 	public boolean isEmpty() {
 		return _size == 0;
 	}
 
+	/**
+	 * Empties the list by having head and tail point towards each other
+	 */
 	public void clear() {
 		_head._next = _tail;
 		_tail._prev = _head;
 		_size = 0;
 	}
 
+	/**
+	 * Gets the size of the list
+	 * @return _size 
+	 */
 	public int size() {
 		return _size;
 	}
 
+	/**
+	 * Adds an element to the front of the list
+	 * @param element
+	 */
 	public void addToFront(T element) {
 		if (element != null) {
 			Node tmpNode = _head._next;
@@ -53,19 +87,42 @@ public class LinkedList<T> {
 		}
 	}
 
+	/**
+	 * Recursive contains method
+	 * @param target
+	 * @return
+	 */
 	public boolean contains(T target) {
 		return contains(_head._next, _tail._prev, target);
 	}
+	
+	/**
+	 * Private recursive contains method
+	 * @param head
+	 * @param tail
+	 * @param target
+	 * @return true if the target is found, false otherwise
+	 */
 	private boolean contains(Node head, Node tail, T target) {
+		
 		if (isEmpty()) return false;
+		
 		if (target == null) return false;
+		
 		if (head._data.equals(target) || (tail._data).equals(target)) return true;
+		
 		if (head._next == tail) return false;
+		
 		if (head == tail) return false;
 
 		return contains(head._next, _tail._prev, target);
 	}
 
+	/**
+	 * Finds and returns the Node behind a specific target
+	 * @param target
+	 * @return
+	 */
 	private Node previous(T target) {
 		for(Node node = _head._next; node != _tail; node = node._next) {
 			if (node._data.equals(target)) return node._prev;
@@ -73,10 +130,16 @@ public class LinkedList<T> {
 		return null;
 	}
 
+	/**
+	 * Removes a target element from the list
+	 * @param target
+	 * @return true if the element was removed
+	 */
 	public boolean remove(T target) {
 		if (!(contains(target))) return false;
 
 		Node node = previous(target);
+		
 		if (node != null) {
 			Node tmpNode = node._next;
 			node._next = tmpNode._next;
@@ -87,10 +150,17 @@ public class LinkedList<T> {
 		return false;
 	}
 
+	/**
+	 * @return the last valid element in the list.
+	 */
 	private Node last() {
 		return _tail._prev;
 	}
 
+	/**
+	 * Adds a valid element to the back of the list.
+	 * @param element
+	 */
 	public void addToBack(T element) {
 		if (element != null) {
 			Node node = last();
@@ -101,6 +171,9 @@ public class LinkedList<T> {
 		}
 	}
 
+	/**
+	 * Creates and returns the toString of the elements in the list.
+	 */
 	public String toString() {
 		StringBuilder s = new StringBuilder();
 		for (Node node = _head._next; node != _tail._prev; node = node._next) {
@@ -111,17 +184,33 @@ public class LinkedList<T> {
 		return s.toString();
 	}
 
+	/**
+	 * Recursive reverse method
+	 */
 	public void reverse() {
 		if (!(isEmpty())) {
 			reverse(_head._next, _tail._prev);
 		}
 	}
+	
+	/**
+	 * Reverses the elements in the list by swapping the first and last element,
+	 * moving the head and tail one node inwards and recursing.
+	 * @param head
+	 * @param tail
+	 */
 	private void reverse(Node head, Node tail) {
 		if (head == tail) return;
 		if (head._prev == tail) return;
 		swap(head, tail);
 		reverse(head._next, tail._prev);
 	}
+	
+	/**
+	 * Swap method that swaps to elements in a list.
+	 * @param head
+	 * @param tail
+	 */
 	private void swap(Node head, Node tail) {
 		T tmpNode = head._data;
 		head._data = tail._data;
