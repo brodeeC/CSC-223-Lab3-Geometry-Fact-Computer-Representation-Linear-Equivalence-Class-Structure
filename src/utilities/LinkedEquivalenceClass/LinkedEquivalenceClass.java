@@ -11,8 +11,11 @@ public class LinkedEquivalenceClass<T> {
 	protected LinkedList<T> _rest;
 	
 	public  LinkedEquivalenceClass(Comparator<T> _comparator) {
+		
 		this._comparator = _comparator; 
+		
 		_rest = new LinkedList<T>();
+		
 		this._canonical = _canonical;
 		
 		
@@ -92,10 +95,14 @@ public class LinkedEquivalenceClass<T> {
 	 * @return
 	 */
 	public boolean contains(T target) { 
-		if(isEmpty()) return false;
-		if(target == null) return false;
 		
-		return _rest.contains(target);
+		if(target == null) return false;
+		if(belongs(target)) {
+			return _rest.contains(target);
+		}
+		
+	
+		return false;
 		
 	}
 	
