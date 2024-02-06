@@ -1,3 +1,9 @@
+/** LinkedList test class
+ * 
+ * @author Brodee Clontz, Eleanor Badgett, Kyler Bailey
+ * @date 02/06/24
+ */
+
 package utilities.LinkedList;
 
 import static org.junit.Assert.assertEquals;
@@ -8,6 +14,9 @@ import org.junit.jupiter.api.Test;
 
 class LinkedListTest {
 
+	/**
+	 * Constructor test
+	 */
 	@Test
 	void testConstructor() {
 		
@@ -18,6 +27,9 @@ class LinkedListTest {
 
 	}
 
+	/**
+	 * Tests isEmpty
+	 */
 	@Test
 	void testIsEmpty() {
 		
@@ -30,6 +42,9 @@ class LinkedListTest {
 		assertFalse("List empty",list.isEmpty());
 	}
 
+	/**
+	 * Tests clear method
+	 */
 	@Test
 	void testClear() {
 		
@@ -52,6 +67,9 @@ class LinkedListTest {
 
 	}
 
+	/**
+	 * Tests size method
+	 */
 	@Test
 	void testSize() {
 		
@@ -66,6 +84,9 @@ class LinkedListTest {
 		assertEquals("Size not 3", list.size(), 3);
 	}
 
+	/**
+	 * Tests adding to the front
+	 */
 	@Test
 	void testAddToFront() {
 
@@ -83,6 +104,9 @@ class LinkedListTest {
 		assertFalse("null found", list.contains(null));
 	}
 
+	/**
+	 * Tests my contains method
+	 */
 	@Test
 	void testContains() {
 		LinkedList<String> list = new LinkedList<String>();
@@ -100,6 +124,9 @@ class LinkedListTest {
 
 	}
 
+	/**
+	 * Tests remove method
+	 */
 	@Test
 	void testRemove() {
 
@@ -127,6 +154,9 @@ class LinkedListTest {
 		
 	}
 
+	/**
+	 * Tests adding to the back of the list
+	 */
 	@Test
 	void testAddToBack() {
 		
@@ -144,6 +174,9 @@ class LinkedListTest {
 		assertFalse(list.contains(null));
 	}
 
+	/**
+	 * Tests the toString method
+	 */
 	@Test
 	void testToString() {
 
@@ -157,9 +190,15 @@ class LinkedListTest {
 		
 	}
 
+	/**
+	 * Tests the reverse method
+	 */
 	@Test
 	void testReverse() {
-
+		
+		//Adding to the front of one list and then to the back of another results in 
+		//the same list but reversed.
+		
 		LinkedList<Integer> list = new LinkedList<Integer>();
 		
 		list.addToBack(1);

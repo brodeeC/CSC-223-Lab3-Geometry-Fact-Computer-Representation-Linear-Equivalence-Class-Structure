@@ -188,9 +188,7 @@ public class LinkedList<T> {
 	 * Recursive reverse method
 	 */
 	public void reverse() {
-		if (!(isEmpty())) {
-			reverse(_head._next, _tail._prev);
-		}
+		if (!(isEmpty())) reverse(_head._next, _tail._prev);
 	}
 	
 	/**
