@@ -43,9 +43,7 @@ public class EquivalenceClasses<T>{
 	public int size() {
 		int sum = 0;
 		for(LinkedEquivalenceClass<T> elm : _classes) {
-			for(int i = 0; i < elm.size(); i++) {
-				sum++;
-			}
+			sum+=elm.size();
 		}
 		return sum;
 	}
