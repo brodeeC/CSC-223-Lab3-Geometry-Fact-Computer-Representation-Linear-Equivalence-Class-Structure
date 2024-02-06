@@ -87,7 +87,7 @@ public class LinkedEquivalenceClass<T> {
 	 * @param target
 	 * @return
 	 */
-	public boolean contains(T target) { //TODO Need a null check
+	public boolean contains(T target) { 
 		if(isEmpty()) return false;
 		if(target == null) return false;
 		
@@ -150,7 +150,14 @@ public class LinkedEquivalenceClass<T> {
 	}
 	
 	public String toString() {
-		return null;
+		StringBuilder s = new StringBuilder();
+		for(int i = 0; i< _rest.size(); i++) {
+			if(_rest.belongs(_canonical)== true) { //TODO
+				
+			}
+		}
+		
+		return s.toString();
 		
 	}
 
