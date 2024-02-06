@@ -17,6 +17,10 @@ public class LinkedEquivalenceClass<T> {
 		
 	}
 	
+	/**
+	 * Returns the canonical element
+	 * @return
+	 */
 	public T canonical() {
 		return _canonical; 
 		
@@ -43,7 +47,7 @@ public class LinkedEquivalenceClass<T> {
 	/**
 	 * Clears the NonCanonical from the LinkedList
 	 */
-	public void clearNonCanonical() { //TODO think this through a little more
+	public void clearNonCanonical() { 
 		_rest.clear();	
 		}
 	
@@ -57,13 +61,18 @@ public class LinkedEquivalenceClass<T> {
 		
 	}
 	
+	/**
+	 * Adds the specified element to the LinkedList based on it's canonical
+	 * @param element
+	 * @return
+	 */
 	public boolean add(T element) {
-		//If the element is even would be added to the front of the linkedlist
+		//If the element is even would be added to the front of the LinkedList
 		if(element != null && _comparator.compare(_canonical, element)==0) {
 			_rest.addToFront(element);
 			return true;
 		}
-		//If the element is odd will be added to the back of the linkedlist
+		//If the element is odd will be added to the back of the LinkedList
 		if(element != null && _comparator.compare(_canonical, element)==1) {
 			_rest.addToBack(element);
 			return true;
@@ -86,11 +95,29 @@ public class LinkedEquivalenceClass<T> {
 		
 	}
 	
+	/**
+	 * Test to see if the target belongs in the canonical
+	 * @param target
+	 * @return
+	 */
 	public boolean belongs (T target) {
+		//If the element is even will return true that it belongs there
+		if(target != null && _comparator.compare(_canonical, target)==0) {
+			return true;													//Ask if this code accurately captures the functionality of belongs()
+		}
+		//If the element is odd will return true that it belongs there
+		if(target != null && _comparator.compare(_canonical, target)==1) {
+			return true;
+		}
 		return false;
 		
 	}
 	
+	/**
+	 * Removes the target element from the LinkedList
+	 * @param target
+	 * @return
+	 */
 	public boolean remove(T target) {
 		if(isEmpty())return false;
 
@@ -103,8 +130,17 @@ public class LinkedEquivalenceClass<T> {
 		
 	}
 	
+	/**
+	 * Removes the canonical from the LinkedList
+	 * @return
+	 */
 	public boolean removeCanonical() {
 		
+		if(_canonical != null && _rest.contains(_canonical)) {
+			_rest.remove(_canonical);
+			return true;
+		}
+	
 		return false;
 	}
 	
