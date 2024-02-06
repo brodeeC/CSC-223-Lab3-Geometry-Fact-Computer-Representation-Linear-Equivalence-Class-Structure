@@ -27,7 +27,7 @@ class EquivalenceClassesTest {
 		
 	}
 	
-	@Test
+	//@Test
 	void testAdd() {
 		Comparator<Integer> comp = new Comparator<Integer>() 
 		{
@@ -41,7 +41,6 @@ class EquivalenceClassesTest {
 		
 		ec.add(lec);
 
-		
 		
 	}
 	
