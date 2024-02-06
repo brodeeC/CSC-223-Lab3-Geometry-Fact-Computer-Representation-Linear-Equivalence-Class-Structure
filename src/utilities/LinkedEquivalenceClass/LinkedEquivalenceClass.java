@@ -79,11 +79,11 @@ public class LinkedEquivalenceClass<T> {
 			_rest.addToFront(element);
 			return true;
 		}
-		//If the element is odd will be added to the back of the LinkedList
-		if(element != null && _comparator.compare(_canonical, element)==1) {
-			_rest.addToBack(element);
-			return true;
-		}
+//		//If the element is odd will be added to the back of the LinkedList
+//		if(element != null && _comparator.compare(_canonical, element)==1) {
+//			_rest.addToBack(element);
+//			return true;
+//		}
 		
 		return false;
 		
