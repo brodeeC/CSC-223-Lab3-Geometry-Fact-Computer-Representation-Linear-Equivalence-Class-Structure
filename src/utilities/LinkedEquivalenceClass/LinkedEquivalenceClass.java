@@ -2,6 +2,10 @@ package utilities.LinkedEquivalenceClass;
 
 import java.util.Comparator;
 
+/**
+ * Authors: Kyler, Eleanor, and Brodee
+ */
+
 import utilities.LinkedList.LinkedList;
 
 public class LinkedEquivalenceClass<T> {
@@ -138,7 +142,7 @@ public class LinkedEquivalenceClass<T> {
 	 */
 	public boolean removeCanonical() {
 		
-		if(_canonical != null && _rest.contains(_canonical)) {
+		if(_canonical != null) {
 			_rest.remove(_canonical);
 			return true;
 		}
