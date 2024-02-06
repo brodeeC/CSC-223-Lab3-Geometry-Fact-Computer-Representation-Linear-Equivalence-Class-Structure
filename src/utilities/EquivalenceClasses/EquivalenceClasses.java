@@ -17,8 +17,8 @@ public class EquivalenceClasses<T>{
 		_comparator = comp;
 	}
 	
-	public boolean add(T element) {
-		return add(element);
+	public boolean add(LinkedEquivalenceClass<T> element) {
+		return _classes.add(element);
 	}
 	
 	public boolean contains(T target) {
