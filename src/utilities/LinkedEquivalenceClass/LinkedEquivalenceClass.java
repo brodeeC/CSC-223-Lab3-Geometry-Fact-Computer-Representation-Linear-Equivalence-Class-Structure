@@ -75,15 +75,12 @@ public class LinkedEquivalenceClass<T> {
 	 */
 	public boolean add(T element) {
 		//If the element is even would be added to the front of the LinkedList
-		if(element != null && _comparator.compare(_canonical, element)==0) {
+		if(belongs(element)) {
 			_rest.addToFront(element);
 			return true;
 		} 
-		else
-		{
-			_rest.addToFront(element);
-			return true;
-		}
+		
+		return false;
 
 	}
 	
@@ -110,7 +107,7 @@ public class LinkedEquivalenceClass<T> {
 	 */
 	public boolean belongs (T target) {
 		
-		if(target != null && _canonical.equals(target)) {
+		if(target != null && _comparator.compare(_canonical, target)==0) {
 			return true;
 		}
 		
