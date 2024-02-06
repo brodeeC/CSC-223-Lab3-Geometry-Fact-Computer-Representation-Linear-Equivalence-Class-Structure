@@ -75,10 +75,13 @@ public class LinkedEquivalenceClass<T> {
 	 * @return
 	 */
 	public boolean add(T element) {
+
 		if(_canonical == null) {
 			_canonical = element;
 		}
-		//If the element is even would be added to the front of the LinkedList
+
+		//Checks to see if the element actually belongs in the LinkedList will add the element
+
 		if(belongs(element)) {
 			_rest.addToFront(element);
 			return true;
