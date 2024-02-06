@@ -2,6 +2,10 @@ package utilities.LinkedEquivalenceClass;
 
 import java.util.Comparator;
 
+/**
+ * Authors: Kyler, Eleanor, and Brodee
+ */
+
 import utilities.LinkedList.LinkedList;
 
 public class LinkedEquivalenceClass<T> {
