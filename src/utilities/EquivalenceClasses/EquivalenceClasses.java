@@ -26,9 +26,14 @@ public class EquivalenceClasses<T>{
 		return _classes.contains(target);
 	}
 	
-	//what is size actually looking for? different than numClasses?
 	public int size() {
-		return _classes.size();
+		int sum = 0;
+		for(LinkedEquivalenceClass<T> elm : _classes) {
+			for(int i = 0; i< elm.size(); i++) {
+				sum++;
+			}
+		}
+		return sum;
 	}
 
 	public int numClasses() {
