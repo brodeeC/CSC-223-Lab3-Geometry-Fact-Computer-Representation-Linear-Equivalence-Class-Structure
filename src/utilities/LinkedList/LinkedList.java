@@ -197,7 +197,7 @@ public class LinkedList<T> {
 			s.append(node._data);
 			s.append(", ");
 		}
-		s.append(_tail._prev._data);
+		s.append(last()._data);
 		return s.toString();
 	}
 
