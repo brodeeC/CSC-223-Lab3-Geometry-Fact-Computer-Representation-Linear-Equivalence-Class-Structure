@@ -4,11 +4,18 @@ import static org.junit.jupiter.api.Assertions.*;
 
 import org.junit.jupiter.api.Test;
 
+import utilities.LinkedList.LinkedList;
+
 class LinkedEquivalenceClassTest {
 
 	@Test
 	void testConstructor() {
-		fail("Not yet implemented");
+		LinkedList<Integer> list = new LinkedList<Integer>();
+		Comparator<Integer> c = new Comparator<Integer>();
+		
+		assertEquals("List was not empty.",list.isEmpty(),list.toString());
+		
+		
 	}
 	
 	@Test

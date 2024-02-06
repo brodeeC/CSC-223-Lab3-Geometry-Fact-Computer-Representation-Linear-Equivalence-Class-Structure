@@ -46,10 +46,12 @@ public class LinkedEquivalenceClass<T> {
 	}
 	
 	/**
-	 * Clears the NonCanonical from the LinkedList
+	 * Clears the NonCanonical elements from the LinkedList
 	 */
-	public void clearNonCanonical() { 
-		_rest.clear();	
+	public void clearNonCanonical() {
+		
+		_rest.clear();
+		
 		
 	}
 	
@@ -103,12 +105,8 @@ public class LinkedEquivalenceClass<T> {
 	 * @return
 	 */
 	public boolean belongs (T target) {
-		//If the element is even will return true that it belongs there
-		if(target != null && _comparator.compare(_canonical, target)==0) {
-			return true;													
-		}
-		//If the element is odd will return true that it belongs there
-		if(target != null && _comparator.compare(_canonical, target)==1) {
+		
+		if(target != null && _canonical.equals(target)) {
 			return true;
 		}
 		
