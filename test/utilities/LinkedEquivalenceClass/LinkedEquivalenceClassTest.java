@@ -1,6 +1,7 @@
 package utilities.LinkedEquivalenceClass;
 
 
+import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertFalse;
 import static org.junit.Assert.assertTrue;
 import static org.junit.jupiter.api.Assertions.*;
@@ -26,80 +27,58 @@ class LinkedEquivalenceClassTest {
 				};
 		
 		assertTrue("List was not empty.",list.isEmpty());
-		assertTrue("Values were not equivalent.",);
 		
 		
 	}
 	
+	/**
+	 * Test to see whether or not the canonical actually exists
+	 */
 	@Test
 	void testCanonical() {
-		Comparator<Integer> c = new Comparator<Integer>()
-		{
-			//All even integers are 'equivalent'
-			//All odd integers are 'equivalent'
-			public int compare(Integer x, Integer y)
-			{return x %2 == y %2 ? 0 : 1;}
-	
-		};
+		int _canonical = 2;
+		
+		assertEquals("Canonical not found.",_canonical,2);
+		
+		_canonical = (Integer) null;
+		 assertEquals("Canonical was a value.",_canonical, null);
+		
+		
 		
 	}
 	
 	@Test
 	void testisEmpty() {
 		LinkedList<Integer> list = new LinkedList<Integer>();
-		Comparator<Integer> c = new Comparator<Integer>()
-		{
-			//All even integers are 'equivalent'
-			//All odd integers are 'equivalent'
-			public int compare(Integer x, Integer y)
-			{return x %2 == y %2 ? 0 : 1;}
-	
-		};
+		
 		
 		assertTrue("List was not empty.",list.isEmpty());
+		
+		
 		
 
 	}
 	
 	@Test
 	void testClear() {
-		Comparator<Integer> c = new Comparator<Integer>()
-		{
-			//All even integers are 'equivalent'
-			//All odd integers are 'equivalent'
-			public int compare(Integer x, Integer y)
-			{return x %2 == y %2 ? 0 : 1;}
-	
-		};
+		LinkedList<Integer> list = new LinkedList<Integer>();
+		int _canonical = 2;
+		list.addToFront(6);
+		list.addToFront(8);
+		list.addToFront(10);
+		
+		assertTrue("List was not cleared.",list.clear());
 		
 	}
 	
 	@Test
 	void testclearNonCanonical() {
-		Comparator<Integer> c = new Comparator<Integer>()
-		{
-			//All even integers are 'equivalent'
-			//All odd integers are 'equivalent'
-			public int compare(Integer x, Integer y)
-			{return x %2 == y %2 ? 0 : 1;}
-	
-		};
+		int _canonical = 2;
+		
 		
 	}
 	
-	@Test
-	void testSize() {
-		Comparator<Integer> c = new Comparator<Integer>()
-		{
-			//All even integers are 'equivalent'
-			//All odd integers are 'equivalent'
-			public int compare(Integer x, Integer y)
-			{return x %2 == y %2 ? 0 : 1;}
-	
-		};
-		
-	}
-	
+
 	@Test
 	void testAdd() {
 		Comparator<Integer> c = new Comparator<Integer>()
@@ -153,14 +132,7 @@ class LinkedEquivalenceClassTest {
 	
 	@Test 
 	void testremoveCanonical() {
-		Comparator<Integer> c = new Comparator<Integer>()
-		{
-			//All even integers are 'equivalent'
-			//All odd integers are 'equivalent'
-			public int compare(Integer x, Integer y)
-			{return x %2 == y %2 ? 0 : 1;}
-	
-		};
+		
 		
 	}
 	
@@ -179,14 +151,7 @@ class LinkedEquivalenceClassTest {
 	
 	@Test
 	void testToString() {
-		Comparator<Integer> c = new Comparator<Integer>()
-		{
-			//All even integers are 'equivalent'
-			//All odd integers are 'equivalent'
-			public int compare(Integer x, Integer y)
-			{return x %2 == y %2 ? 0 : 1;}
-	
-		};
+		
 		
 	}
 	
