@@ -17,33 +17,57 @@ public class EquivalenceClasses<T>{
 		_comparator = comp;
 	}
 	
+	/**
+	 * adds linkedEquivalenceClass to _classes arrayList
+	 * @param element
+	 * @return boolean if element is added
+	 */
 	public boolean add(LinkedEquivalenceClass<T> element) {
 		return _classes.add(element);
 	}
 	
+	/**
+	 * sees if desired element target is contained in _classes
+	 * @param target
+	 * @return
+	 */
 	public boolean contains(T target) {
 		if(_classes.isEmpty()) return false;
 		return _classes.contains(target);
 	}
 	
+	/**
+	 * sums total number of elements in all linkedEquivlalenceClasses 
+	 * @return int total size
+	 */
 	public int size() {
 		int sum = 0;
 		for(LinkedEquivalenceClass<T> elm : _classes) {
-			for(int i = 0; i< elm.size(); i++) {
+			for(int i = 0; i < elm.size(); i++) {
 				sum++;
 			}
 		}
 		return sum;
 	}
 
+	/**
+	 * number of Classes in _classes
+	 * @return total classes
+	 */
 	public int numClasses() {
 		return _classes.size(); 
 	}
 	
+	/**
+	 * finds index of desired element
+	 * @param element
+	 * @return int index of element
+	 */
 	protected int indexOfClass(T element) {
 		if(!(contains(element))) return -1;
 		return _classes.indexOf(element);
 	}
+	
 	
 	public String toString() {
 		StringBuilder str = new StringBuilder();
