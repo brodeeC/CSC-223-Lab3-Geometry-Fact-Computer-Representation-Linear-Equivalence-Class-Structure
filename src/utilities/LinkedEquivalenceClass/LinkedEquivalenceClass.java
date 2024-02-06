@@ -78,15 +78,13 @@ public class LinkedEquivalenceClass<T> {
 		if(element != null && _comparator.compare(_canonical, element)==0) {
 			_rest.addToFront(element);
 			return true;
+		} 
+		else
+		{
+			_rest.addToFront(element);
+			return true;
 		}
-//		//If the element is odd will be added to the back of the LinkedList
-//		if(element != null && _comparator.compare(_canonical, element)==1) {
-//			_rest.addToBack(element);
-//			return true;
-//		}
-		
-		return false;
-		
+
 	}
 	
 	/**
@@ -101,7 +99,6 @@ public class LinkedEquivalenceClass<T> {
 			return _rest.contains(target);
 		}
 		
-	
 		return false;
 		
 	}
