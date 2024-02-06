@@ -124,10 +124,27 @@ public class LinkedList<T> {
 	 * @return
 	 */
 	private Node previous(T target) {
-		for(Node node = _head._next; node != _tail; node = node._next) {
-			if (node._data.equals(target)) return node._prev;
-		}
-		return null;
+		if (!(contains(target))) return null;
+		return previous(_head._next, _tail._prev, target);
+	}
+	
+	/**
+	 * Private recursive method 
+	 * @param head
+	 * @param tail
+	 * @param target
+	 * @return the previous node
+	 */
+	private Node previous(Node head, Node tail, T target) {
+		if (head._data.equals(target)) return head._prev;
+		
+		if (tail._data.equals(target)) return tail._prev;
+		
+		if (head._next == tail) return null;
+		
+		if (head == tail) return null;
+
+		return previous(head._next, _tail._prev, target);
 	}
 
 	/**
