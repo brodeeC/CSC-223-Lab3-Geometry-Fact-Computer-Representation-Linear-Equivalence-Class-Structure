@@ -11,8 +11,9 @@ public class LinkedEquivalenceClass<T> {
 	protected LinkedList<T> _rest;
 	
 	public  LinkedEquivalenceClass(Comparator<T> _comparator) {
-		_comparator = new Comparator<T>(); //Ask Dr. Alvin do I need this line
+		this._comparator = _comparator; 
 		_rest = new LinkedList<T>();
+		this._canonical = _canonical;
 		
 		
 	}
@@ -49,7 +50,8 @@ public class LinkedEquivalenceClass<T> {
 	 */
 	public void clearNonCanonical() { 
 		_rest.clear();	
-		}
+		
+	}
 	
 	/**
 	 * Returns the size of the LinkedList 
@@ -103,12 +105,13 @@ public class LinkedEquivalenceClass<T> {
 	public boolean belongs (T target) {
 		//If the element is even will return true that it belongs there
 		if(target != null && _comparator.compare(_canonical, target)==0) {
-			return true;													//Ask if this code accurately captures the functionality of belongs()
+			return true;													
 		}
 		//If the element is odd will return true that it belongs there
 		if(target != null && _comparator.compare(_canonical, target)==1) {
 			return true;
 		}
+		
 		return false;
 		
 	}
@@ -144,21 +147,30 @@ public class LinkedEquivalenceClass<T> {
 		return false;
 	}
 	
+	/**
+	 * Demote the canonical and sets it into the list, then takes the 
+	 * element and sets it as the canonical.
+	 * @param element
+	 * @return
+	 */
 	public boolean demoteAndSetCanonical(T element) {
+		if(_canonical != null && element != null) {
+			T temp = _canonical;
+			_rest.addToFront(_canonical);
+			_canonical = element;
+			
+			return true;
+			
+		}
 		
 		return false;
 	}
 	
+	/**
+	 * Constructs a string of the LinkedList
+	 */
 	public String toString() {
-		StringBuilder s = new StringBuilder();
-		for(int i = 0; i< _rest.size(); i++) {
-			if(_rest.belongs(_canonical)== true) { //TODO
-				
-			}
-		}
-		
-		return s.toString();
-		
+		return _rest.toString();		
 	}
 
 }
