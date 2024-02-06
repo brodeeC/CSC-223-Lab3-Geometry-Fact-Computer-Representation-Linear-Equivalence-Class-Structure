@@ -14,10 +14,7 @@ public class LinkedEquivalenceClass<T> {
 		
 		this._comparator = _comparator; 
 		
-		_rest = new LinkedList<T>();
-		
-		this._canonical = _canonical;
-		
+		_rest = new LinkedList<T>();		
 		
 	}
 	
@@ -121,15 +118,9 @@ public class LinkedEquivalenceClass<T> {
 	 * @return
 	 */
 	public boolean remove(T target) {
-		if(isEmpty())return false;
 
-		if(target != null && _rest.contains(target)) {
-			_rest.remove(target);
-			return true;
-		}
-		
-		return false;
-		
+		return _rest.remove(target);
+			
 	}
 	
 	/**
@@ -138,12 +129,8 @@ public class LinkedEquivalenceClass<T> {
 	 */
 	public boolean removeCanonical() {
 		
-		if(_canonical != null && _rest.contains(_canonical)) {
-			_rest.remove(_canonical);
-			return true;
-		}
-	
-		return false;
+		return _rest.remove(_canonical);
+			
 	}
 	
 	/**
@@ -154,7 +141,6 @@ public class LinkedEquivalenceClass<T> {
 	 */
 	public boolean demoteAndSetCanonical(T element) {
 		if(_canonical != null && element != null) {
-			T temp = _canonical;
 			_rest.addToFront(_canonical);
 			_canonical = element;
 			

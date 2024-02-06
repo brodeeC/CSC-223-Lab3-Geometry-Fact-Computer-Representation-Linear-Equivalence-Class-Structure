@@ -153,8 +153,6 @@ public class LinkedList<T> {
 	 * @return true if the element was removed
 	 */
 	public boolean remove(T target) {
-		if (!(contains(target))) return false;
-
 		Node node = previous(target);
 		
 		if (node != null) {
