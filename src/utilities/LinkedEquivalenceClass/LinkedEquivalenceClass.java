@@ -141,7 +141,11 @@ public class LinkedEquivalenceClass<T> {
 	 */
 	public boolean removeCanonical() {
 		
-		return _rest.remove(_canonical);
+		if(_canonical != null && _rest.contains(_canonical)) {
+			return _rest.remove(_canonical);
+		}
+	
+		return false;
 			
 	}
 	

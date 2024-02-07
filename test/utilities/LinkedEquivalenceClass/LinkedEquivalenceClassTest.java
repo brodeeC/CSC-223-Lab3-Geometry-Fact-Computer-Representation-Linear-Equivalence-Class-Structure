@@ -15,6 +15,10 @@ import utilities.LinkedList.LinkedList;
 
 class LinkedEquivalenceClassTest {
 
+	/**
+	 * Test to see that the LinkedList, Comparator, and canonical are properly 
+	 * constructed 
+	 */
 	@Test
 	void testConstructor() { //Work on the constuctor add a canonical test
 		LinkedList<Integer> list = new LinkedList<Integer>();
@@ -30,7 +34,7 @@ class LinkedEquivalenceClassTest {
 		
 		
 		assertTrue("List was not empty.",list.isEmpty());
-		assertTrue("Canonical element was not detected",_canonical);
+		assertEquals("Canonical element was not detected",_canonical,2);
 		
 		
 	}
@@ -51,6 +55,10 @@ class LinkedEquivalenceClassTest {
 		
 	}
 	
+	/**
+	 * Test to check the boolean isEmpty condition for the LinkedList operates 
+	 * properly.
+	 */
 	@Test
 	void testisEmpty() {
 		LinkedList<Integer> list = new LinkedList<Integer>();
@@ -63,9 +71,19 @@ class LinkedEquivalenceClassTest {
 		list.addToBack(8);
 		
 		assertFalse("List was empty.",list.isEmpty());
+		assertEquals("List does not contain elements.",list.size(),3);
+		
+		list.clear();
+		
+		assertEquals("List was not empty.",list.isEmpty(),true);
+		assertEquals("List still contains elements.",list.size(),0);
 
 	}
 	
+	/**
+	 * Test that the LinkedList is when clear is called all elements are
+	 * removed
+	 */
 	@Test
 	void testClear() {
 		LinkedList<Integer> list = new LinkedList<Integer>();
@@ -86,6 +104,9 @@ class LinkedEquivalenceClassTest {
 		
 	}
 	
+	/**
+	 * Test to see that only the NonCanonicals are cleared within the list.
+	 */
 	@Test
 	void testclearNonCanonical() {
 		int _canonical = 2;
@@ -103,6 +124,9 @@ class LinkedEquivalenceClassTest {
 	}
 	
 
+	/**
+	 * Test that elements are properly added to either the back or front
+	 */
 	@Test
 	void testAdd() {
 		LinkedList<Integer> list = new LinkedList<Integer>();
@@ -133,6 +157,10 @@ class LinkedEquivalenceClassTest {
 		
 	}
 	
+	/**
+	 * Test to see that the contains method properly 
+	 * finds a given target with returning true or false if found.
+	 */
 	@Test 
 	void testContains() {
 		LinkedList<Integer> list = new LinkedList<Integer>();
@@ -226,6 +254,10 @@ class LinkedEquivalenceClassTest {
 		
 	}
 	
+	/**
+	 * Test that the given elements are properly placed into 
+	 * a given string.
+	 */
 	@Test
 	void testToString() {
 		LinkedList<Integer> list = new LinkedList<Integer>();
