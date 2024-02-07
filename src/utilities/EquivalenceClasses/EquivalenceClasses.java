@@ -33,7 +33,13 @@ public class EquivalenceClasses<T>{
 	 */
 	public boolean contains(T target) {
 		if(_classes.isEmpty()) return false;
-		return _classes.contains(target);
+		for(LinkedEquivalenceClass<T> elm : _classes) {
+			if(elm.contains(target)) {
+				return true;
+				
+			}
+		}
+		return false;		
 	}
 	
 	/**
