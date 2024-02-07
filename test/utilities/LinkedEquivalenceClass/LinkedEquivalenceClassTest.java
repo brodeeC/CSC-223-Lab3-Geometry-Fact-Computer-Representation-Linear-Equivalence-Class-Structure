@@ -40,10 +40,9 @@ class LinkedEquivalenceClassTest {
 		
 		assertEquals("Canonical not found.",_canonical,2);
 		
-		_canonical = (Integer) null;
-		 assertEquals("Canonical was a value.",_canonical, null);
+		_canonical = 3;
 		
-		
+		assertEquals("Canonical value did not change.",_canonical,3);
 		
 	}
 	
@@ -54,8 +53,11 @@ class LinkedEquivalenceClassTest {
 		
 		assertTrue("List was not empty.",list.isEmpty());
 		
+		list.addToBack(4);
+		list.addToBack(6);
+		list.addToBack(8);
 		
-		
+		assertFalse("List was empty.",list.isEmpty());
 
 	}
 	
@@ -63,11 +65,12 @@ class LinkedEquivalenceClassTest {
 	void testClear() {
 		LinkedList<Integer> list = new LinkedList<Integer>();
 		int _canonical = 2;
-		list.addToFront(6);
-		list.addToFront(8);
-		list.addToFront(10);
+		list.addToBack(6);
+		list.addToBack(8);
+		list.addToBack(10);
+		list.clear();
 		
-		assertTrue("List was not cleared.",list.clear());
+		assertEquals("List was not cleared.",list.isEmpty(),true);
 		
 	}
 	
@@ -75,12 +78,15 @@ class LinkedEquivalenceClassTest {
 	void testclearNonCanonical() {
 		int _canonical = 2;
 		
+		assertEquals("No canonical value detected.",_canonical,2);
+		
 		
 	}
 	
 
 	@Test
 	void testAdd() {
+		LinkedList<Integer> list = new LinkedList<Integer>();
 		Comparator<Integer> c = new Comparator<Integer>()
 		{
 			//All even integers are 'equivalent'
@@ -89,6 +95,12 @@ class LinkedEquivalenceClassTest {
 			{return x %2 == y %2 ? 0 : 1;}
 	
 		};
+		int _canonical = 2;
+		list.addToBack(6);
+		list.addToBack(8);
+		list.addToBack(10);
+		
+		
 		
 	}
 	
