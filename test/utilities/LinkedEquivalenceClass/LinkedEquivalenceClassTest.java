@@ -16,7 +16,7 @@ import utilities.LinkedList.LinkedList;
 class LinkedEquivalenceClassTest {
 
 	@Test
-	void testConstructor() {
+	void testConstructor() { //Work on the constuctor add a canonical test
 		LinkedList<Integer> list = new LinkedList<Integer>();
 		Comparator<Integer> c = new Comparator<Integer>()
 				{
@@ -26,8 +26,11 @@ class LinkedEquivalenceClassTest {
 					{return x %2 == y %2 ? 0 : 1;}
 			
 				};
+		int _canonical = 2;
+		
 		
 		assertTrue("List was not empty.",list.isEmpty());
+		assertTrue("Canonical element was not detected",_canonical);
 		
 		
 	}
