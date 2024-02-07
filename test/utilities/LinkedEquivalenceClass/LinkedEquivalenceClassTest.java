@@ -108,13 +108,17 @@ class LinkedEquivalenceClassTest {
 		list.addToBack(6);
 		list.addToBack(8);
 		list.addToBack(10);
-		//Include a space after each comma 
-		assertEquals("Elements not added.",list.toString(),"6, 8, 10");
+		
+		assertEquals("Elements not added.",list.toString(),"6, 8, 10"); //Include a space after each comma with the toString
 		
 		list.addToBack(12);
 		list.addToBack(14);
 		
 		assertEquals("Elements not added.",list.toString(),"6, 8, 10, 12, 14");
+		
+		list.addToFront(4);
+		
+		assertEquals("Elements not added.",list.toString(),"4, 6, 8, 10, 12, 14");
 		
 		
 	}
