@@ -83,7 +83,7 @@ public class LinkedEquivalenceClass<T> {
 		//Checks to see if the element actually belongs in the LinkedList will add the element
 
 		if(belongs(element)) {
-			_rest.addToFront(element);
+			_rest.addToBack(element);
 			return true;
 		} 
 		
