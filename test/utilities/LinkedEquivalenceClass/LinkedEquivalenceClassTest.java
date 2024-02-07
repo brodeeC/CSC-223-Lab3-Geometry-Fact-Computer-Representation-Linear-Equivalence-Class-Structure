@@ -74,6 +74,13 @@ class LinkedEquivalenceClassTest {
 		
 		assertEquals("List was not cleared.",list.isEmpty(),true);
 		
+		list.addToBack(4);
+		list.addToBack(10);
+		
+		//Test that you can add elements back to a cleared list
+		assertEquals("List is still cleared.",list.isEmpty(),false);
+		
+		
 	}
 	
 	@Test
