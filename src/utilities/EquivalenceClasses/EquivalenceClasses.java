@@ -69,9 +69,9 @@ public class EquivalenceClasses<T>{
 	
 	public String toString() {
 		StringBuilder str = new StringBuilder();
-		str.append("comparator: " + _comparator);
+		//str.append("comparator: " + _comparator);
 		for(int i = 0; i<numClasses(); i++) {
-			str.append(_classes.get(i));
+			str.append("{"+_classes.get(i)+"},");
 		}
 		return str.toString();
 	}

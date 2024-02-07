@@ -52,18 +52,18 @@ class EquivalenceClassesTest {
 		lec2.add(5);
 		lec2.add(17);
 		
+		System.out.println(lec2);
+		
 		EquivalenceClasses<Integer> ec = new EquivalenceClasses<Integer>(comp);
 		
-		System.out.println(lec.toString());
 		
 		assertTrue(ec.add(lec));
-		
 		assertEquals(1, ec.numClasses());
-		assertEquals(3,ec.size());
-		assertTrue(ec.add(lec2));
+		assertEquals(6,ec.size());
 		
+		assertTrue(ec.add(lec2));
 		assertEquals(2, ec.numClasses());
-		assertEquals(7, ec.size());
+		assertEquals(9, ec.size());
 		
 		
 	}
