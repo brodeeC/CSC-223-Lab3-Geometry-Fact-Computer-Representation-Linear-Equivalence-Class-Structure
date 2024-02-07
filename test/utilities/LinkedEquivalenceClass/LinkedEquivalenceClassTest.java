@@ -99,13 +99,20 @@ class LinkedEquivalenceClassTest {
 		list.addToBack(6);
 		list.addToBack(8);
 		list.addToBack(10);
+		//Include a space after each comma 
+		assertEquals("Elements not added.",list.toString(),"6, 8, 10");
 		
+		list.addToBack(12);
+		list.addToBack(14);
+		
+		assertEquals("Elements not added.",list.toString(),"6, 8, 10, 12, 14");
 		
 		
 	}
 	
 	@Test 
 	void testContains() {
+		LinkedList<Integer> list = new LinkedList<Integer>();
 		Comparator<Integer> c = new Comparator<Integer>()
 		{
 			//All even integers are 'equivalent'
@@ -114,11 +121,23 @@ class LinkedEquivalenceClassTest {
 			{return x %2 == y %2 ? 0 : 1;}
 	
 		};
+		int _canonical = 2;
+		list.addToBack(6);
+		list.addToBack(8);
+		list.addToBack(10);
+		
+		assertTrue("List does not contain 10.",list.contains(6));
+		assertFalse("List contains the value.",list.contains(12));
+		
+		list.addToBack(null);
+		
+		assertFalse("List does not contain null value.",list.contains(null)); //Trouble with null value
 		
 	}
 	
 	@Test
 	void testBelongs() {
+		LinkedList<Integer> list = new LinkedList<Integer>();
 		Comparator<Integer> c = new Comparator<Integer>()
 		{
 			//All even integers are 'equivalent'
@@ -127,11 +146,17 @@ class LinkedEquivalenceClassTest {
 			{return x %2 == y %2 ? 0 : 1;}
 	
 		};
+		int _canonical = 2;
+		list.addToBack(6);
+		list.addToBack(8);
+		list.addToBack(10);
 		
 	}
 	
 	@Test
-	void testRemove() {Comparator<Integer> c = new Comparator<Integer>()
+	void testRemove() {
+		LinkedList<Integer> list = new LinkedList<Integer>();
+		Comparator<Integer> c = new Comparator<Integer>()
 	{
 		//All even integers are 'equivalent'
 		//All odd integers are 'equivalent'
@@ -150,6 +175,7 @@ class LinkedEquivalenceClassTest {
 	
 	@Test
 	void testdemoteAndSetCanonical() {
+		LinkedList<Integer> list = new LinkedList<Integer>();
 		Comparator<Integer> c = new Comparator<Integer>()
 		{
 			//All even integers are 'equivalent'

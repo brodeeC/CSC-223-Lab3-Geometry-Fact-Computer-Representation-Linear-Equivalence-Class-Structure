@@ -3,6 +3,8 @@ package utilities.LinkedEquivalenceClass;
 import java.util.Comparator;
 
 /**
+ * This is a LinkedEquivalence Class 
+ * 
  * Authors: Kyler, Eleanor, and Brodee
  */
 
