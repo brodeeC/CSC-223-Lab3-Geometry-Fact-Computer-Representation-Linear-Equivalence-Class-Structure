@@ -103,6 +103,38 @@ class EquivalenceClassesTest {
 	@Test
 	void testSize() {
 		
+		Comparator<Integer> comp = new Comparator<Integer>() 
+		{
+			public int compare(Integer x, Integer y)
+			{return x % 5 == y % 5 ? 0:1;}
+			
+		};
+		
+		EquivalenceClasses<Integer> ec = new EquivalenceClasses<Integer>(comp);
+		
+		assertEquals(0,ec.size());
+		
+		LinkedEquivalenceClass<Integer>  lec = new LinkedEquivalenceClass<Integer>(comp);
+		
+		int [] list = new int[] {0,1,2,3,4,5,6,12,15,80};
+		for(int i : list) {
+			lec.add(i);
+		}
+		
+		ec.add(lec);
+		assertEquals(4,ec.size());
+		
+		LinkedEquivalenceClass<Integer> lec2 = new LinkedEquivalenceClass<Integer>(comp);
+		
+		int [] list2 = new int[] {4,12,16,90,-3,4,7,-15};
+		
+		for(int i :list2) {
+			lec2.add(i);
+		}
+		
+		ec.add(lec2);
+		assertEquals(6,ec.size());
+		
 	}
 
 	@Test 
