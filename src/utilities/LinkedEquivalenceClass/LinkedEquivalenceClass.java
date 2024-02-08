@@ -9,7 +9,7 @@ import java.util.Comparator;
  * 
  * Authors: Kyler, Eleanor, and Brodee
  */
-www
+
 import utilities.LinkedList.LinkedList;
 
 public class LinkedEquivalenceClass<T> {

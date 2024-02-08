@@ -26,7 +26,7 @@ class LinkedEquivalenceClassTest {
 	 * constructed 
 	 */
 	@Test
-	void testConstructor() { //Work on the constuctor add a canonical test
+	void testConstructor() { //Work on the constructor add a canonical test
 		LinkedList<Integer> list = new LinkedList<Integer>();
 		Comparator<Integer> c = new Comparator<Integer>()
 				{
