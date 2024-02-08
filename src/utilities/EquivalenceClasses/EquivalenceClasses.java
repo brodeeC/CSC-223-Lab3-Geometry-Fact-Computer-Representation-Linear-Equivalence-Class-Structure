@@ -43,6 +43,16 @@ public class EquivalenceClasses<T>{
 	}
 	
 	/**
+	 * contains class? //is this right? index of class needs this
+	 * @param target
+	 * @return
+	 */
+	public boolean contains(LinkedEquivalenceClass<T> target) {
+		if(_classes.isEmpty()) return false;
+		return _classes.contains(target);
+	}
+	
+	/**
 	 * sums total number of elements in all linkedEquivlalenceClasses 
 	 * @return int total size
 	 */
@@ -72,6 +82,10 @@ public class EquivalenceClasses<T>{
 		return _classes.indexOf(element);
 	}
 	
+	protected int indexOfClass(LinkedEquivalenceClass<T> element) {
+		if(!(contains(element))) return -1;
+		return _classes.indexOf(element);
+	}
 	
 	public String toString() {
 		StringBuilder str = new StringBuilder();
