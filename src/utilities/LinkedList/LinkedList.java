@@ -157,7 +157,7 @@ public class LinkedList<T> {
 		if (node != null) {
 			Node tmpNode = node._next;
 			node._next = tmpNode._next;
-			tmpNode._prev = node;
+			tmpNode._next._prev = node;
 			_size--;
 			return true;
 		}
