@@ -13,7 +13,12 @@ import org.junit.jupiter.api.Test;
 import utilities.LinkedList.LinkedList;
 import utilities.LinkedEquivalenceClass.*;
 
-
+/**
+ * This Junit test case test each method within the LinkeEquivalnceClass.
+ * 
+ * @author Kyler, Brodee, and Eleanor
+ * Date: February 5, 2024
+ */
 class LinkedEquivalenceClassTest {
 
 	/**
@@ -50,7 +55,6 @@ class LinkedEquivalenceClassTest {
 		assertEquals("Canonical not found.",_canonical,2);
 		
 		_canonical = 3;
-		
 		assertEquals("Canonical value did not change.",_canonical,3);
 		
 		
@@ -143,16 +147,14 @@ class LinkedEquivalenceClassTest {
 		list.addToBack(6);
 		list.addToBack(8);
 		list.addToBack(10);
-		
+		//Test to see that elements were properly
 		assertEquals("Elements not added.",list.toString(),"6, 8, 10"); //Include a space after each comma with the toString
-		
+		//Test to see that more elements can be added onto the LinkedList
 		list.addToBack(12);
 		list.addToBack(14);
-		
 		assertEquals("Elements not added.",list.toString(),"6, 8, 10, 12, 14");
-		
+		//Test to see you can add to the Front of the LinkedList
 		list.addToFront(4);
-		
 		assertEquals("Elements not added.",list.toString(),"4, 6, 8, 10, 12, 14");
 		
 		
@@ -278,6 +280,10 @@ class LinkedEquivalenceClassTest {
 		list.addToBack(8);
 		list.addToBack(10);
 		list.addToBack(12);
+		
+		list.demoteAndSetCanonical(element);
+		
+		assertEquals("Canonical was not changed.",_canonical,3);
 		
 		
 	}

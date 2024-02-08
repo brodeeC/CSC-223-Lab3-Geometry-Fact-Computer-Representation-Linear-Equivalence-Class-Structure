@@ -3,11 +3,13 @@ package utilities.LinkedEquivalenceClass;
 import java.util.Comparator;
 
 /**
- * This is a LinkedEquivalence Class 
+ * This is a LinkedEquivalence Class that manages a linked list of elements 
+ * that it groups equivalent elements together based on canonical element.
+ * defined by a comparator.  
  * 
  * Authors: Kyler, Eleanor, and Brodee
  */
-
+www
 import utilities.LinkedList.LinkedList;
 
 public class LinkedEquivalenceClass<T> {
