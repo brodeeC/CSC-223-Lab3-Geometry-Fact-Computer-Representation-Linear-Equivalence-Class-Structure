@@ -296,6 +296,8 @@ class LinkedEquivalenceClassTest {
 		assertEquals("String was not properly implemented.",list.toString(),"4, 6, 8, 10, 12");
 		list.addToBack(20);
 		assertEquals("String was not properly implemented.",list.toString(),"4, 6, 8, 10, 12, 20");
+		
+		//TODO Error occurs here
 		list.remove(20);
 		assertEquals("String was not properly implemented.",list.toString(),"4, 6, 8, 10,12");
 		
