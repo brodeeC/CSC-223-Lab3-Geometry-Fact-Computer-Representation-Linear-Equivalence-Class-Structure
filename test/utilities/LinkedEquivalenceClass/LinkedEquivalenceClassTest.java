@@ -11,6 +11,7 @@ import java.util.Comparator;
 import org.junit.jupiter.api.Test;
 
 import utilities.LinkedList.LinkedList;
+import utilities.LinkedEquivalenceClass.*;
 
 
 class LinkedEquivalenceClassTest {
@@ -208,7 +209,7 @@ class LinkedEquivalenceClassTest {
 	 * Test to see that a given element can be removed from the LinkedList.
 	 */
 	@Test
-	void testRemove() { //TODO remove is acting funny
+	void testRemove() { 
 		LinkedList<Integer> list = new LinkedList<Integer>();
 		Comparator<Integer> c = new Comparator<Integer>()
 	{
@@ -241,7 +242,21 @@ class LinkedEquivalenceClassTest {
 	
 	@Test 
 	void testremoveCanonical() {
+		LinkedList<Integer> list = new LinkedList<Integer>();
+		int _canonical = 2;
+		list.addToBack(6);
+		list.addToBack(8);
+		list.addToBack(10);
 		
+		//Test Case #1 where canonical is not within the LinkedList
+		assertFalse("Canonical was removed.",list.remove(_canonical));
+		//Test Case #2 where canonical is within the LinkedList
+		list.addToBack(2);
+		assertTrue("Canonical was not removed.",list.remove(_canonical));
+		//Test Case #3 where the canonical is null
+		//The canonical is already null because in the test above the value was removed
+		//and not replaced.
+		assertFalse("Canonical was removed when it was null.",list.remove(_canonical));
 		
 	}
 	
