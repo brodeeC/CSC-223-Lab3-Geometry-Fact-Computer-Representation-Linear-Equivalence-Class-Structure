@@ -264,8 +264,7 @@ class LinkedEquivalenceClassTest {
 	 */
 	@Test
 	void testdemoteAndSetCanonical() {
-		LinkedEquivalenceClass<Integer> list = new LinkedList<Integer>(); //Figure out this part of the code
-																		 //TODO Go through an redo your code
+		
 		Comparator<Integer> c = new Comparator<Integer>()
 		{
 			//All even integers are 'equivalent'
@@ -274,6 +273,8 @@ class LinkedEquivalenceClassTest {
 			{return x %2 == y %2 ? 0 : 1;}
 	
 		};
+		
+		LinkedEquivalenceClass<Integer> list = new LinkedEquivalenceClass<Integer>(c);
 		int _canonical = 2;
 		Integer element = 3;
 		
@@ -284,7 +285,7 @@ class LinkedEquivalenceClassTest {
 		
 		list.demoteAndSetCanonical(element);
 		
-		assertEquals("Canonical was not changed.",_canonical,3);
+		assertEquals(list.canonical(), 3, "Canonical was not changed.");
 		
 		
 	}
