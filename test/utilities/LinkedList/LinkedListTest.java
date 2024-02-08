@@ -132,6 +132,8 @@ class LinkedListTest {
 
 		LinkedList<Integer> list = new LinkedList<Integer>();
 		
+		assertFalse("Removed from an empty list", list.remove(10));
+		
 		list.addToFront(1);
 		list.addToFront(2);
 		list.addToFront(3);

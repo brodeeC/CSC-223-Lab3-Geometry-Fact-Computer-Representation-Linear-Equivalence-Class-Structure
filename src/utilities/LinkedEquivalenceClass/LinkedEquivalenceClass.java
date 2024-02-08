@@ -21,7 +21,7 @@ public class LinkedEquivalenceClass<T> {
 	public  LinkedEquivalenceClass(Comparator<T> _comparator) {
 		
 		this._comparator = _comparator; 
-		
+		_canonical = null;
 		_rest = new LinkedList<T>();		
 		
 	}
