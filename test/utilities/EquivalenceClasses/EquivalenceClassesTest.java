@@ -43,16 +43,13 @@ class EquivalenceClassesTest {
 		for( int i : list) {
 			lec.add(i);
 		}
-		
-		System.out.println(lec);
-		
+				
 		LinkedEquivalenceClass<Integer> lec2 = new LinkedEquivalenceClass<Integer>(comp);
 		lec2.add(25);
 		lec2.add(30);
 		lec2.add(5);
 		lec2.add(17);
 		
-		System.out.println(lec2);
 		
 		EquivalenceClasses<Integer> ec = new EquivalenceClasses<Integer>(comp);
 		
@@ -77,13 +74,66 @@ class EquivalenceClassesTest {
 			
 		};
 		
+		LinkedEquivalenceClass<Integer> lec = new LinkedEquivalenceClass<Integer>(comp);
 		
+		int[] list = new int [] {0,1,2,3,4,5,6,7,8,9,10,11,12,13,14,15};
+		for(int i : list) {
+			lec.add(i);
+		}
 		
+		LinkedEquivalenceClass<Integer> lec2 = new LinkedEquivalenceClass<Integer>(comp);
+		int [] list2 = new int[] {30,31,23,45,75,8,13,-3,0,-11};
+		for(int i : list2) {
+			lec2.add(i);
+		}
+		
+		EquivalenceClasses<Integer> ec = new EquivalenceClasses<Integer>(comp);
+		
+		assertTrue(ec.add(lec));
+		assertTrue(ec.add(lec2));
+		
+		assertTrue(ec.contains(0));
+		assertFalse(ec.contains(2));
+		assertTrue(ec.contains(3));
+		assertFalse(ec.contains(99));
+		assertTrue(ec.contains(-3));
 		
 	}
 	
 	@Test
 	void testSize() {
+		
+		Comparator<Integer> comp = new Comparator<Integer>() 
+		{
+			public int compare(Integer x, Integer y)
+			{return x % 5 == y % 5 ? 0:1;}
+			
+		};
+		
+		EquivalenceClasses<Integer> ec = new EquivalenceClasses<Integer>(comp);
+		
+		assertEquals(0,ec.size());
+		
+		LinkedEquivalenceClass<Integer>  lec = new LinkedEquivalenceClass<Integer>(comp);
+		
+		int [] list = new int[] {0,1,2,3,4,5,6,12,15,80};
+		for(int i : list) {
+			lec.add(i);
+		}
+		
+		ec.add(lec);
+		assertEquals(4,ec.size());
+		
+		LinkedEquivalenceClass<Integer> lec2 = new LinkedEquivalenceClass<Integer>(comp);
+		
+		int [] list2 = new int[] {4,12,16,90,-3,4,7,-15};
+		
+		for(int i :list2) {
+			lec2.add(i);
+		}
+		
+		ec.add(lec2);
+		assertEquals(6,ec.size());
 		
 	}
 
