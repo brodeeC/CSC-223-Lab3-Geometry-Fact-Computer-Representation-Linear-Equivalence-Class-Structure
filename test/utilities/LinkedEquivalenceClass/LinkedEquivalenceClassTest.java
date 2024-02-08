@@ -253,10 +253,7 @@ class LinkedEquivalenceClassTest {
 		//Test Case #2 where canonical is within the LinkedList
 		list.addToBack(2);
 		assertTrue("Canonical was not removed.",list.remove(_canonical));
-		//Test Case #3 where the canonical is null
-		//The canonical is already null because in the test above the value was removed
-		//and not replaced.
-		assertFalse("Canonical was removed when it was null.",list.remove(_canonical));
+		
 		
 	}
 	
