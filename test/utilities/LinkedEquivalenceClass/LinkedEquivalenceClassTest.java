@@ -204,6 +204,9 @@ class LinkedEquivalenceClassTest {
 		
 	}
 	
+	/**
+	 * Test to see that a given element can be removed from the LinkedList.
+	 */
 	@Test
 	void testRemove() { //TODO remove is acting funny
 		LinkedList<Integer> list = new LinkedList<Integer>();
@@ -222,16 +225,18 @@ class LinkedEquivalenceClassTest {
 	list.addToBack(10);
 	list.addToBack(12);
 	
+	//Test to make sure all the elements are in the list
+	assertEquals("The integers were not in the list.",list.toString(),"6, 8, 10, 12" );
+	//Remove instance number 1, removed the end element
 	list.remove(12);
+	assertEquals("Integer 12 was not removed.", list.size(),3);
+	//Remove instance number 2, removed the middle element
+	list.remove(8);
+	assertEquals("Integer 8 was not removed.",list.size(),2);
+	//Removing a null value 
+	list.remove(null);
+	assertEquals("List was altered.",list.size(),2);
 	
-	
-	
-	assertEquals("Element was not removed.","6, 8, 10",list.toString());
-//	assertFalse(list.remove(13));
-//	assertEquals("List was altered.",list.toString(),"6, 8, 10");
-//	assertTrue(list.remove(6));
-//	assertEquals("Elements not added.",list.toString(),"8, 10");
-//	assertFalse(list.remove(null));
 	}
 	
 	@Test 
@@ -240,6 +245,9 @@ class LinkedEquivalenceClassTest {
 		
 	}
 	
+	/**
+	 * Test that the canonical is demoted and set into the LinkedList
+	 */
 	@Test
 	void testdemoteAndSetCanonical() {
 		LinkedList<Integer> list = new LinkedList<Integer>();
@@ -251,6 +259,14 @@ class LinkedEquivalenceClassTest {
 			{return x %2 == y %2 ? 0 : 1;}
 	
 		};
+		int _canonical = 2;
+		Integer element = 3;
+		
+		list.addToBack(6);
+		list.addToBack(8);
+		list.addToBack(10);
+		list.addToBack(12);
+		
 		
 	}
 	
@@ -280,6 +296,8 @@ class LinkedEquivalenceClassTest {
 		assertEquals("String was not properly implemented.",list.toString(),"4, 6, 8, 10, 12");
 		list.addToBack(20);
 		assertEquals("String was not properly implemented.",list.toString(),"4, 6, 8, 10, 12, 20");
+		list.remove(20);
+		assertEquals("String was not properly implemented.",list.toString(),"4, 6, 8, 10,12");
 		
 	}
 	
