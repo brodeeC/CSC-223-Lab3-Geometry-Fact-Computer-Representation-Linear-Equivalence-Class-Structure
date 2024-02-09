@@ -54,7 +54,6 @@ public class EquivalenceClasses<T>{
 		for(LinkedEquivalenceClass<T> elm : _classes) {
 			if(elm.contains(target)) {
 				return true;
-				
 			}
 		}
 		return false;		
