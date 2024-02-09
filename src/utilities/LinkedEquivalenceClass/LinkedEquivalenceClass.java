@@ -60,7 +60,7 @@ public class LinkedEquivalenceClass<T> {
 		
 		_rest.clear();
 		//replaces canonical information
-		_rest.addToBack(_canonical);//ELEANOR ADDED THIS - now needed with with update to add I think
+		_rest.addToBack(_canonical);
 		
 		
 	}
@@ -84,8 +84,8 @@ public class LinkedEquivalenceClass<T> {
 
 		if(_canonical == null) {
 			_canonical = element;
-			_rest.addToBack(element); //Eleanor added this - prevents canoncial from appearing in linkedEquivalenceClass twice
-			return true;//Eleanor added this - same as above
+			_rest.addToBack(element); 
+			return true;
 		}
 
 		//Checks to see if the element actually belongs in the LinkedList will add the element

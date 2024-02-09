@@ -10,9 +10,6 @@ import java.util.Comparator;
 
 import org.junit.jupiter.api.Test;
 
-import utilities.LinkedList.LinkedList;
-import utilities.LinkedEquivalenceClass.*;
-
 /**
  * This Junit test case test each method within the LinkeEquivalnceClass.
  * 
@@ -35,6 +32,7 @@ class LinkedEquivalenceClassTest {
 			{return x %2 == y %2 ? 0 : 1;}
 
 		};	
+		
 		LinkedEquivalenceClass<Integer> list = new LinkedEquivalenceClass<Integer>(comp); 
 		int _canonical = 2;
 
@@ -71,25 +69,11 @@ class LinkedEquivalenceClassTest {
 		//ensures canonical does not change when new elm is added
 		assertEquals(6, list.canonical());
 
-
-
 		LinkedEquivalenceClass<Integer> list2 = new LinkedEquivalenceClass<Integer>(comp);
 		list2.add(2);
 		list2.add(3);
 		list2.add(-22);
 		assertEquals(2, list2.canonical());
-
-
-
-		//		int _canonical = 2;
-		//		
-		//		assertEquals("Canonical not found.",_canonical,2);
-		//		
-		//		_canonical = 3;
-		//		assertEquals("Canonical value did not change.",_canonical,3);
-
-
-
 
 	}
 
@@ -141,7 +125,7 @@ class LinkedEquivalenceClassTest {
 
 		};	
 		LinkedEquivalenceClass<Integer> list = new LinkedEquivalenceClass<Integer>(comp);
-		//		int _canonical = 2;
+		
 		assertTrue(list.add(6));
 		assertTrue(list.add(8));
 		assertTrue(list.add(10));
@@ -153,18 +137,12 @@ class LinkedEquivalenceClassTest {
 		list.clear();
 		assertTrue(list.isEmpty());
 
-		//		assertEquals("List was not cleared.",list.isEmpty(),true);
-
 		assertTrue(list.add(4));
 		assertTrue(list.add(10));
 		assertFalse(list.add(7));
 
 		assertEquals(2, list.size());
 		assertFalse(list.isEmpty());
-
-		//Test that you can add elements back to a cleared list
-		//		assertEquals("List is still cleared.",list.isEmpty(),false);
-
 
 	}
 
@@ -183,21 +161,15 @@ class LinkedEquivalenceClassTest {
 		};	
 		LinkedEquivalenceClass<Integer> list = new LinkedEquivalenceClass<Integer>(comp);
 
-		//int _canonical = 2;
 		list.add(6);
 		list.add(8);
 		list.add(10);
 		list.add(7);
-		//list.clear();
+		
 		assertEquals(3, list.size());
 
 		list.clearNonCanonical();
 		assertEquals(1, list.size());
-
-		//Test the only thing removed is the elements in the list not the canonical
-		//		assertEquals("No canonical value detected.",_canonical,2);
-		//		assertEquals("Elements detected within the LinkeList.",list.size(),0);
-
 
 	}
 
@@ -235,22 +207,6 @@ class LinkedEquivalenceClassTest {
 		assertTrue(list.add(4));
 		assertEquals("6, 8, 24, 88, 100, -2, 4", list.toString());
 
-		//		int _canonical = 2;
-		//		list.add(6);
-		//		list.add(8);
-		//		list.add(10);
-		//		//Test to see that elements were properly
-		//		assertEquals("Elements not added.",list.toString(),"6, 8, 10"); //Include a space after each comma with the toString
-		//		//Test to see that more elements can be added onto the LinkedList
-		//		list.add(12);
-		//		list.add(14);
-		//		assertEquals("Elements not added.",list.toString(),"6, 8, 10, 12, 14");
-		//		//Test to see if an element may be less than the last can still be placed
-		//		list.add(4);
-		//		assertEquals("Element not added.",list.toString(),"6, 8, 10, 12, 14, 4");
-
-
-
 	}
 
 	/**
@@ -269,7 +225,6 @@ class LinkedEquivalenceClassTest {
 		};
 		LinkedEquivalenceClass<Integer> list = new LinkedEquivalenceClass<Integer>(comp);
 
-		//int _canonical = 2;
 		assertTrue(list.add(6));
 		list.add(8);
 		list.add(10);
@@ -284,7 +239,7 @@ class LinkedEquivalenceClassTest {
 
 	}
 
-	@Test //TODO test Belongs
+	@Test 
 	void testBelongs() {
 
 		Comparator<Integer> comp = new Comparator<Integer>()
@@ -301,10 +256,7 @@ class LinkedEquivalenceClassTest {
 		list.belongs(3);
 		list.belongs(4);
 
-		assertTrue("Element does not belongs in list.",list.belongs(3));
-		//assertFalse("Element does not belongs in list.",list.belongs(3));
-
-
+		assertTrue("Element does not belong in list.",list.belongs(3));
 
 	}
 
@@ -325,9 +277,6 @@ class LinkedEquivalenceClassTest {
 		};
 		LinkedEquivalenceClass<Integer> list = new LinkedEquivalenceClass<Integer>(comp);
 
-
-
-		//int _canonical = 2;
 		list.add(6);
 		list.add(8);
 		list.add(10);
@@ -361,7 +310,7 @@ class LinkedEquivalenceClassTest {
 
 		};
 		LinkedEquivalenceClass<Integer> list = new LinkedEquivalenceClass<Integer>(comp);
-		//int _canonical = 2;
+ 
 		list.add(6);
 		list.add(8);
 		list.add(10);
@@ -370,14 +319,8 @@ class LinkedEquivalenceClassTest {
 		
 		assertTrue(list.removeCanonical());
 		assertEquals("8, 10", list.toString());
-
-//		//Test Case #1 where canonical is not within the LinkedList
-//		assertFalse("Canonical was removed.",list.remove(_canonical));
-//		//Test Case #2 where canonical is within the LinkedList
-//		list.add(2);
-//		assertTrue("Canonical was not removed.",list.remove(_canonical));
-
-
+		assertEquals(8,list.canonical());
+		
 	}
 
 	/**
@@ -397,10 +340,6 @@ class LinkedEquivalenceClassTest {
 
 		LinkedEquivalenceClass<Integer> list = new LinkedEquivalenceClass<Integer>(comp); 
 
-
-//		int _canonical = 2;
-//		Integer element = 3;
-
 		list.add(6);
 		list.add(8);
 		list.add(10);
@@ -414,10 +353,6 @@ class LinkedEquivalenceClassTest {
 		assertTrue(list.demoteAndSetCanonical(20));
 		assertEquals(20, list.canonical());
 		
-
-//		assertEquals(list.canonical(), 3, "Canonical was not changed.");
-
-
 	}
 
 	/**
@@ -426,7 +361,7 @@ class LinkedEquivalenceClassTest {
 	 */
 	@Test
 	void testToString() {
-		//LinkedList<Integer> list = new LinkedList<Integer>();
+
 		Comparator<Integer> c = new Comparator<Integer>()
 		{
 			//All even integers are 'equivalent'
@@ -451,25 +386,6 @@ class LinkedEquivalenceClassTest {
 		assertTrue(list.remove(4));
 		assertEquals("0, 2, 12", list.toString());
 
-		
-		
-
-//		int _canonical = 2;
-//		list.addToBack(6);
-//		list.addToBack(8);
-//		list.addToBack(10);
-//		list.addToBack(12);
-//
-//		assertEquals("String was not properly implemented.",list.toString(),"6, 8, 10, 12");
-//		list.addToFront(4);
-//		assertEquals("String was not properly implemented.",list.toString(),"4, 6, 8, 10, 12");
-//		list.addToBack(20);
-//		assertEquals("String was not properly implemented.",list.toString(),"4, 6, 8, 10, 12, 20");
-//
-//		list.remove(20);
-//		assertEquals("String was not properly implemented.",list.toString(),"4, 6, 8, 10, 12");
-
 	}
-
 
 }
