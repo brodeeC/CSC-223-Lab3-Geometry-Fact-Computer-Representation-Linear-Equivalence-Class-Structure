@@ -21,7 +21,7 @@ public class LinkedEquivalenceClass<T> {
 	public  LinkedEquivalenceClass(Comparator<T> _comparator) {
 		
 		this._comparator = _comparator; 
-		_canonical = null;
+		this._canonical = null;
 		_rest = new LinkedList<T>();		
 		
 	}
@@ -142,13 +142,17 @@ public class LinkedEquivalenceClass<T> {
 	}
 	
 	/**
-	 * Removes the canonical from the LinkedList
+	 * Removes the canonical from the LinkedList and replaces it with 
+	 * a valid element
 	 * @return
 	 */
 	public boolean removeCanonical() {
 		
 		if(_canonical != null && _rest.contains(_canonical)) {
-			return _rest.remove(_canonical);
+			_rest.remove(_canonical);
+			_canonical = _rest.getFirst();
+			
+			return true;
 		}
 	
 		return false;
@@ -162,12 +166,14 @@ public class LinkedEquivalenceClass<T> {
 	 * @return
 	 */
 	public boolean demoteAndSetCanonical(T element) {
-		if(_canonical != null && element != null && belongs(element)) {//Eleanor added && belongs(element) - prevents you from setting canonical to a value that does not belong in equivalence class
-			_rest.addToFront(_canonical);
-			_canonical = element;
-			
-			return true;
-			
+		
+		if(_canonical != null && element != null) {
+			if(belongs(element)) {
+				_rest.addToFront(_canonical);
+				_canonical = element;
+				
+				return true;
+			}
 		}
 		
 		return false;

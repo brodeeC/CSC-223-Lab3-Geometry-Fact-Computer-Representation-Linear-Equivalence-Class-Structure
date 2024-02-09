@@ -197,6 +197,17 @@ public class LinkedList<T> {
 		s.append(last()._data);
 		return s.toString();
 	}
+	
+	/**
+	 * Gets the first valid element within the LinkedList
+	 *
+	 */
+	
+	public T getFirst() {
+		
+		return _head._next._data;
+		
+	}
 
 	/**
 	 * Recursive reverse method
