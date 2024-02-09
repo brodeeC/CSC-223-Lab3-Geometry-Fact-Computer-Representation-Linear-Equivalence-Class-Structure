@@ -80,8 +80,8 @@ class LinkedEquivalenceClassTest {
 		
 		assertTrue("List was not empty.",list.isEmpty());
 		
-		list.add(4);
-		list.add(6);
+		assertTrue(list.add(4));
+		assertTrue(list.add(6));
 		list.add(8);
 		
 		assertFalse("List was empty.",list.isEmpty());
@@ -171,19 +171,36 @@ class LinkedEquivalenceClassTest {
 		};
 		LinkedEquivalenceClass<Integer> list = new LinkedEquivalenceClass<Integer>(comp);
 		
-		int _canonical = 2;
-		list.add(6);
-		list.add(8);
-		list.add(10);
-		//Test to see that elements were properly
-		assertEquals("Elements not added.",list.toString(),"6, 8, 10"); //Include a space after each comma with the toString
-		//Test to see that more elements can be added onto the LinkedList
-		list.add(12);
-		list.add(14);
-		assertEquals("Elements not added.",list.toString(),"6, 8, 10, 12, 14");
-		//Test to see if an element may be less than the last can still be placed
-		list.add(4);
-		assertEquals("Element not added.",list.toString(),"6, 8, 10, 12, 14, 4");
+		assertTrue(list.add(6));
+		assertTrue(list.add(8));
+		assertTrue(list.add(24));
+		assertTrue(list.add(88));
+		assertTrue(list.add(100));
+		assertTrue(list.add(-2));
+		
+		//ensures that an element that does not belong cannot be added
+		assertFalse(list.add(7));
+		
+		
+		//ensured Elements properly added
+		assertEquals("6, 8, 24, 88, 100, -2", list.toString());
+		
+		assertTrue(list.add(4));
+		assertEquals("6, 8, 24, 88, 100, -2, 4", list.toString());
+		
+//		int _canonical = 2;
+//		list.add(6);
+//		list.add(8);
+//		list.add(10);
+//		//Test to see that elements were properly
+//		assertEquals("Elements not added.",list.toString(),"6, 8, 10"); //Include a space after each comma with the toString
+//		//Test to see that more elements can be added onto the LinkedList
+//		list.add(12);
+//		list.add(14);
+//		assertEquals("Elements not added.",list.toString(),"6, 8, 10, 12, 14");
+//		//Test to see if an element may be less than the last can still be placed
+//		list.add(4);
+//		assertEquals("Element not added.",list.toString(),"6, 8, 10, 12, 14, 4");
 		
 		
 		

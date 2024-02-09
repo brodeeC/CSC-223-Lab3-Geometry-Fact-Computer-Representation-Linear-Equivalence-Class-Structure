@@ -24,6 +24,7 @@ public class EquivalenceClasses<T>{
 			LinkedEquivalenceClass<T> that = new LinkedEquivalenceClass<T>(_comparator); 
 			that.add(element);
 			_classes.add(that);
+			return true;
 		}
 		
 		return _classes.get(indexOfClass(element)).add(element);
@@ -46,15 +47,6 @@ public class EquivalenceClasses<T>{
 		return false;		
 	}
 	
-	/**
-	 * contains class? //is this right? index of class needs this
-	 * @param target
-	 * @return
-	 */
-	public boolean contains(LinkedEquivalenceClass<T> target) {
-		if(_classes.isEmpty()) return false;
-		return _classes.contains(target);
-	}
 	
 	/**
 	 * sums total number of elements in all linkedEquivlalenceClasses 
@@ -76,15 +68,12 @@ public class EquivalenceClasses<T>{
 		return _classes.size(); 
 	}
 	
-	/**
-	 * finds index of desired element
-	 * @param element
-	 * @return int index of element
-	 */
-	protected int indexOfClasses(T element) {
-		if(!(contains(element))) return -1;
-		return _classes.indexOf(element);
-	}
+//	/**
+//	 * finds index of desired element
+//	 * @param element
+//	 * @return int index of element
+//	 */
+
 	
 	protected int indexOfClass(T element) {
 		for( LinkedEquivalenceClass<T> elm : _classes) {
@@ -99,9 +88,10 @@ public class EquivalenceClasses<T>{
 	public String toString() {
 		StringBuilder str = new StringBuilder();
 		//str.append("comparator: " + _comparator);
-		for(int i = 0; i<numClasses(); i++) {
+		for(int i = 0; i<numClasses()-1; i++) {
 			str.append("{"+_classes.get(i)+"},");
 		}
+		str.append("{"+_classes.get(_classes.size()-1)+"}");
 		return str.toString();
 	}
 

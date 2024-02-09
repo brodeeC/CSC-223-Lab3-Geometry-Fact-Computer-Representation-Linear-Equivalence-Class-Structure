@@ -82,6 +82,8 @@ public class LinkedEquivalenceClass<T> {
 
 		if(_canonical == null) {
 			_canonical = element;
+			_rest.addToBack(element);
+			return true;
 		}
 
 		//Checks to see if the element actually belongs in the LinkedList will add the element
@@ -169,11 +171,12 @@ public class LinkedEquivalenceClass<T> {
 		return false;
 	}
 	
-	/**
-	 * Constructs a string of the LinkedList
-	 */
+//	/**
+//	 * Constructs a string of the LinkedList
+//	 */
+
 	public String toString() {
-		return _rest.toString();		
+		return _rest.toString();
 	}
 
 }
