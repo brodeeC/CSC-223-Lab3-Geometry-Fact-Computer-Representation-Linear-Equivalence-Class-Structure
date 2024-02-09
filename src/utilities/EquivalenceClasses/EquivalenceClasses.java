@@ -1,3 +1,10 @@
+/**
+ * Creates an EquivalenceClass arrayList made up of LinkedEquivalenceClasses
+ * @author Brodee Clontz, Kyler Bailey, Eleanor Badgett
+ * @date 2/9/2024
+ * @param <T>
+ */
+
 package utilities.EquivalenceClasses;
 
 import java.util.ArrayList;
@@ -5,6 +12,7 @@ import java.util.Comparator;
 import java.util.List;
 
 import utilities.LinkedEquivalenceClass.LinkedEquivalenceClass;
+
 
 public class EquivalenceClasses<T>{
 	
@@ -19,6 +27,11 @@ public class EquivalenceClasses<T>{
 	
 
 	
+	/**
+	 * adds element to appropriate LinkedEquivalenceClass in ArrayList, creates new if does not exist
+	 * @param element
+	 * @return
+	 */
 	public boolean add(T element) {
 		if(indexOfClass(element)==-1) {
 			LinkedEquivalenceClass<T> that = new LinkedEquivalenceClass<T>(_comparator); 
@@ -61,20 +74,18 @@ public class EquivalenceClasses<T>{
 	}
 
 	/**
-	 * number of Classes in _classes
+	 * number of Classes in EquivalenceClasses arrayList
 	 * @return total classes
 	 */
 	public int numClasses() {
 		return _classes.size(); 
 	}
 	
-//	/**
-//	 * finds index of desired element
-//	 * @param element
-//	 * @return int index of element
-//	 */
-
-	
+	/**
+	 * Returns index of EquivalanceClass where element belongs
+	 * @param element
+	 * @return int index of element
+	 */
 	protected int indexOfClass(T element) {
 		for( LinkedEquivalenceClass<T> elm : _classes) {
 			if(elm.belongs(element)) {

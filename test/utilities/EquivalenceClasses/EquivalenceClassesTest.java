@@ -1,3 +1,8 @@
+/** Equivalence test class
+ * 
+ * @author Brodee Clontz, Eleanor Badgett, Kyler Bailey
+ * @date 02/09/24
+ */
 package utilities.EquivalenceClasses;
 
 import static org.junit.jupiter.api.Assertions.*;
@@ -27,7 +32,6 @@ class EquivalenceClassesTest {
 		assertEquals(0, ec.numClasses());
 		assertEquals(0, ec.size());
 		
-		
 	}
 	
 	@Test
@@ -46,9 +50,8 @@ class EquivalenceClassesTest {
 		for( int i : list) {
 			assertTrue(ec.add(i));
 		}
-
-		//TODO additonal tests with other methods??
 		
+		assertTrue(ec.add(-45));
 	}
 	
 	@Test
@@ -75,7 +78,6 @@ class EquivalenceClassesTest {
 		assertTrue(ec.add(-2));
 		assertTrue(ec.contains(-2));
 		
-		
 	}
 	
 	@Test
@@ -101,8 +103,6 @@ class EquivalenceClassesTest {
 		
 		ec.add(-30);
 		assertEquals(11,ec.size());
-		
-		
 		
 	}
 
@@ -157,8 +157,7 @@ class EquivalenceClassesTest {
 		
 		assertTrue(ec.add(2));
 		assertEquals(2, ec.indexOfClass(2));
-				
-
+			
 	}
 
 
@@ -183,7 +182,5 @@ class EquivalenceClassesTest {
 		assertTrue(ec.add(-32));
 		assertEquals("{3, 7, 23, 21},{48, -4, -32}", ec.toString());
 
-
-		
 	}
 }
