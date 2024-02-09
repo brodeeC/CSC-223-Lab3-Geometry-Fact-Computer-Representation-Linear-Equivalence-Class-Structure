@@ -17,13 +17,17 @@ public class EquivalenceClasses<T>{
 		_comparator = comp;
 	}
 	
-	/**
-	 * adds linkedEquivalenceClass to _classes arrayList
-	 * @param element
-	 * @return boolean if element is added
-	 */
-	public boolean add(LinkedEquivalenceClass<T> element) {
-		return _classes.add(element);
+
+	
+	public boolean add(T element) {
+		if(indexOfClass(element)==-1) {
+			LinkedEquivalenceClass<T> that = new LinkedEquivalenceClass<T>(_comparator); 
+			that.add(element);
+			_classes.add(that);
+		}
+		
+		return _classes.get(indexOfClass(element)).add(element);
+		
 	}
 	
 	/**
@@ -77,14 +81,19 @@ public class EquivalenceClasses<T>{
 	 * @param element
 	 * @return int index of element
 	 */
-	protected int indexOfClass(T element) {
+	protected int indexOfClasses(T element) {
 		if(!(contains(element))) return -1;
 		return _classes.indexOf(element);
 	}
 	
-	protected int indexOfClass(LinkedEquivalenceClass<T> element) {
-		if(!(contains(element))) return -1;
-		return _classes.indexOf(element);
+	protected int indexOfClass(T element) {
+		for( LinkedEquivalenceClass<T> elm : _classes) {
+			if(elm.belongs(element)) {
+				return _classes.indexOf(elm);
+			}
+		}
+		return -1;
+	
 	}
 	
 	public String toString() {

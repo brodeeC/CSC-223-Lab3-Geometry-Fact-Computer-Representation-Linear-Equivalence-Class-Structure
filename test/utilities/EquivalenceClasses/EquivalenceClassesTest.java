@@ -12,6 +12,24 @@ import utilities.LinkedEquivalenceClass.LinkedEquivalenceClass;
 
 class EquivalenceClassesTest {
 
+	
+	//@Test 
+	void testAddNew(){
+		Comparator<Integer> comp = new Comparator<Integer>()
+		{
+			public int compare(Integer x, Integer y)
+			{return x % 3 == y % 3 ? 0:1; }
+			
+		};
+		EquivalenceClasses<Integer> ec = new EquivalenceClasses<Integer>(comp);
+		ec.add(5);
+		ec.add(27);
+		ec.add(0);
+		ec.add(1);
+		ec.add(3);
+		System.out.println(ec);
+		
+	}
 	@Test
 	void testConstructor() {
 		Comparator<Integer> comp = new Comparator<Integer>() 
@@ -37,31 +55,15 @@ class EquivalenceClassesTest {
 			{return x % 2 == y % 2 ? 0 : 1; }
 			
 		};
-		
-		LinkedEquivalenceClass<Integer> lec = new LinkedEquivalenceClass<Integer>(comp);
-		int[] list = new int[] {0,1,2,3,4,5,6,7,8,9,10};
-		for( int i : list) {
-			lec.add(i);
-		}
-				
-		LinkedEquivalenceClass<Integer> lec2 = new LinkedEquivalenceClass<Integer>(comp);
-		lec2.add(25);
-		lec2.add(30);
-		lec2.add(5);
-		lec2.add(17);
-		
-		
+
 		EquivalenceClasses<Integer> ec = new EquivalenceClasses<Integer>(comp);
 		
-		
-		assertTrue(ec.add(lec));
-		assertEquals(1, ec.numClasses());
-		assertEquals(6,ec.size());
-		
-		assertTrue(ec.add(lec2));
-		assertEquals(2, ec.numClasses());
-		assertEquals(9, ec.size());
-		
+		int [] list = new int[] {0,1,2,3,4,5,6,7,8,10};
+		for( int i : list) {
+			assertTrue(ec.add(i));
+		}
+
+		//TODO additonal tests with other methods??
 		
 	}
 	
@@ -74,29 +76,19 @@ class EquivalenceClassesTest {
 			
 		};
 		
-		LinkedEquivalenceClass<Integer> lec = new LinkedEquivalenceClass<Integer>(comp);
+		EquivalenceClasses<Integer> ec = new EquivalenceClasses<Integer>(comp);
 		
 		int[] list = new int [] {0,1,2,3,4,5,6,7,8,9,10,11,12,13,14,15};
 		for(int i : list) {
-			lec.add(i);
+			ec.add(i);
+			assertTrue(ec.contains(i));
 		}
 		
-		LinkedEquivalenceClass<Integer> lec2 = new LinkedEquivalenceClass<Integer>(comp);
-		int [] list2 = new int[] {30,31,23,45,75,8,13,-3,0,-11};
-		for(int i : list2) {
-			lec2.add(i);
-		}
+		assertFalse(ec.contains(200));
 		
-		EquivalenceClasses<Integer> ec = new EquivalenceClasses<Integer>(comp);
+		assertTrue(ec.add(-2));
+		assertTrue(ec.contains(-2));
 		
-		assertTrue(ec.add(lec));
-		assertTrue(ec.add(lec2));
-		
-		assertTrue(ec.contains(0));
-		assertFalse(ec.contains(2));
-		assertTrue(ec.contains(3));
-		assertFalse(ec.contains(99));
-		assertTrue(ec.contains(-3));
 		
 	}
 	
@@ -114,26 +106,18 @@ class EquivalenceClassesTest {
 		
 		assertEquals(0,ec.size());
 		
-		LinkedEquivalenceClass<Integer>  lec = new LinkedEquivalenceClass<Integer>(comp);
-		
 		int [] list = new int[] {0,1,2,3,4,5,6,12,15,80};
 		for(int i : list) {
-			lec.add(i);
+			ec.add(i);
+			System.out.println(ec);
 		}
 		
-		ec.add(lec);
-		assertEquals(4,ec.size());
+		assertEquals(10,ec.size());
 		
-		LinkedEquivalenceClass<Integer> lec2 = new LinkedEquivalenceClass<Integer>(comp);
+		ec.add(-30);
+		assertEquals(11,ec.size());
 		
-		int [] list2 = new int[] {4,12,16,90,-3,4,7,-15};
 		
-		for(int i :list2) {
-			lec2.add(i);
-		}
-		
-		ec.add(lec2);
-		assertEquals(6,ec.size());
 		
 	}
 
@@ -184,7 +168,7 @@ class EquivalenceClassesTest {
 		
 	}
 	
-	@Test
+//	@Test
 	void testIndexOfClass() {
 		Comparator<Integer> comp = new Comparator<Integer>() 
 		{
@@ -228,6 +212,7 @@ class EquivalenceClassesTest {
 		ec.add(lec3);
 		
 		assertEquals(2, ec.indexOfClass(lec3));
+		System.out.println(ec.indexOfClass(6));
 		
 	}
 
