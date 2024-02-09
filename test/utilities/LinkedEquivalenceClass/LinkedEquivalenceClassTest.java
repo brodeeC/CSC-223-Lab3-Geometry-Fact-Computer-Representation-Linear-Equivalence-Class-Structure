@@ -230,11 +230,12 @@ class LinkedEquivalenceClassTest {
 		};
 		LinkedEquivalenceClass<Integer> list = new LinkedEquivalenceClass<Integer>(comp);
 		
-		int _canonical = 2;
+		list.add(7);
 		list.belongs(3);
 		list.belongs(4);
 		
-		assertFalse("Element does not belongs in list.",list.belongs(3));
+		assertTrue("Element does not belongs in list.",list.belongs(3));
+		//assertFalse("Element does not belongs in list.",list.belongs(3));
 		
 		
 		
