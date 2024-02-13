@@ -114,7 +114,7 @@ public class LinkedList<T> {
 		
 		if (head == tail) return false;
 
-		return contains(head._next, _tail._prev, target);
+		return contains(head._next, tail._prev, target);
 	}
 
 	/**
@@ -143,7 +143,7 @@ public class LinkedList<T> {
 		
 		if (head == tail) return null;
 
-		return previous(head._next, _tail._prev, target);
+		return previous(head._next, tail._prev, target);
 	}
 
 	/**
